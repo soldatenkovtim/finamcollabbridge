@@ -1,0 +1,126 @@
+.criteria {
+  padding: 80px 24px;
+  background: var(--bg-card);
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.title {
+  font-size: clamp(32px, 4vw, 44px);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: var(--text-secondary);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 800px;
+  margin: 0 auto 48px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 28px;
+  background: var(--bg-dark);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  transition: all var(--transition-base);
+}
+
+.item:hover {
+  border-color: rgba(0, 166, 81, 0.3);
+  transform: translateX(8px);
+}
+
+.icon {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.text {
+  font-size: 16px;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.importantNote {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 28px 32px;
+  background: linear-gradient(135deg, rgba(0, 166, 81, 0.08) 0%, rgba(0, 196, 180, 0.04) 100%);
+  border: 1px solid rgba(0, 166, 81, 0.25);
+  border-radius: 16px;
+}
+
+.noteIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  background: var(--gradient-primary);
+  border-radius: 14px;
+  color: white;
+  flex-shrink: 0;
+}
+
+.noteContent {
+  flex: 1;
+}
+
+.noteTitle {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--finam-primary);
+  margin-bottom: 8px;
+}
+
+.noteText {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.noteText strong {
+  color: var(--text-primary);
+}
+
+@media (max-width: 600px) {
+  .item {
+    padding: 20px;
+    gap: 16px;
+  }
+  
+  .icon {
+    font-size: 24px;
+  }
+  
+  .text {
+    font-size: 14px;
+  }
+  
+  .importantNote {
+    flex-direction: column;
+    padding: 24px;
+  }
+}
