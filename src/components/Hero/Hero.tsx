@@ -6,8 +6,8 @@ import styles from './Hero.module.css'
 export function Hero() {
   return (
     <section className={styles.hero}>
-      <div className={styles.backgroundGlow} />
-      <div className={styles.gridPattern} />
+      {/* Фоновый эффект */}
+      <div className={styles.backgroundEffect} />
       
       <div className={styles.container}>
         <motion.div
@@ -71,11 +71,10 @@ export function Hero() {
             { num: '02', text: 'Мы помогаем упаковать её в проект' },
             { num: '03', text: 'Ищем подходящего специалиста через Collab' },
             { num: '04', text: 'Вы вместе находите решение' },
-          ].map((step, index) => (
+          ].map((step) => (
             <div key={step.num} className={styles.step}>
               <span className={styles.stepNum}>{step.num}</span>
               <span className={styles.stepText}>{step.text}</span>
-              {index < 3 && <div className={styles.stepConnector} />}
             </div>
           ))}
         </motion.div>

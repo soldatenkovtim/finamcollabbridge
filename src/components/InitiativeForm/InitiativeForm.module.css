@@ -1,45 +1,56 @@
 .form {
-  padding: 80px 24px 100px;
+  background-color: #0D0512;
+  padding: 80px 40px;
 }
 
 .container {
-  max-width: 720px;
+  max-width: 1440px;
   margin: 0 auto;
+  padding-left: 115px;
+  padding-right: 115px;
 }
 
 .header {
-  text-align: center;
+  text-align: left;
   margin-bottom: 48px;
 }
 
 .title {
-  font-size: clamp(32px, 4vw, 44px);
-  font-weight: 800;
-  color: var(--text-primary);
+  font-family: 'Inter Tight', var(--font-inter-tight), sans-serif;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.72px;
+  color: #FFF;
   margin-bottom: 12px;
 }
 
 .subtitle {
-  font-size: 18px;
-  color: var(--text-secondary);
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.17px;
+  color: rgba(255, 255, 255, 0.72);
 }
 
 .formCard {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
   padding: 40px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-radius: 24px;
+  max-width: 720px;
 }
 
 .formGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 
 .formGroup {
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 
 .formGroup:last-of-type {
@@ -49,121 +60,131 @@
 .label {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 12px;
+  font-weight: 500;
+  line-height: 20px;
+  color: rgba(255, 255, 255, 0.72);
+  margin-bottom: 10px;
 }
 
 .required {
-  color: var(--finam-accent-orange);
+  color: #EF5541;
 }
 
 .priorityValue {
   margin-left: auto;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--finam-primary);
-  padding: 4px 10px;
-  background: rgba(0, 166, 81, 0.1);
-  border-radius: 6px;
+  font-weight: 400;
+  color: #A78BFA;
 }
 
-.input,
+.input {
+  width: 100%;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: #FFF;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  transition: all var(--transition-base);
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.input:focus {
+  outline: none;
+  border-color: rgba(168, 85, 247, 0.5);
+  box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.2);
+}
+
 .textarea {
   width: 100%;
   padding: 16px 20px;
-  font-family: inherit;
-  font-size: 15px;
-  color: var(--text-primary);
-  background: var(--bg-dark);
-  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 12px;
-  outline: none;
-  transition: all var(--transition-fast);
-}
-
-.input::placeholder,
-.textarea::placeholder {
-  color: var(--text-muted);
-}
-
-.input:hover,
-.textarea:hover {
-  border-color: var(--text-muted);
-}
-
-.input:focus,
-.textarea:focus {
-  border-color: var(--finam-primary);
-  box-shadow: 0 0 0 3px rgba(0, 166, 81, 0.1);
-}
-
-.textarea {
+  color: #FFF;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
   resize: vertical;
-  min-height: 120px;
+  min-height: 140px;
+  transition: all var(--transition-base);
 }
 
-/* Search Type Buttons */
+.textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: rgba(168, 85, 247, 0.5);
+  box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.2);
+}
+
 .searchTypeButtons {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .searchTypeBtn {
   display: flex;
-  flex-direction: column;
   align-items: center;
   gap: 10px;
-  padding: 20px 16px;
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-secondary);
-  background: var(--bg-dark);
-  border: 2px solid var(--border-color);
-  border-radius: 14px;
+  padding: 14px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.72);
   cursor: pointer;
   transition: all var(--transition-base);
 }
 
 .searchTypeBtn:hover {
-  border-color: var(--text-muted);
-  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .searchTypeBtn.active {
-  border-color: var(--finam-primary);
-  background: rgba(0, 166, 81, 0.08);
-  color: var(--text-primary);
+  background: rgba(168, 85, 247, 0.15);
+  border-color: rgba(168, 85, 247, 0.5);
+  color: #FFF;
 }
 
 .btnIcon {
-  font-size: 28px;
+  font-size: 18px;
 }
 
-/* Slider */
 .sliderWrapper {
   position: relative;
+  padding: 8px 0;
 }
 
 .sliderLabels {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 16px;
+  font-family: 'Inter', sans-serif;
   font-size: 12px;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 12px;
 }
 
 .slider {
   width: 100%;
-  height: 8px;
+  height: 6px;
   -webkit-appearance: none;
   appearance: none;
-  background: var(--bg-dark);
-  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
   outline: none;
   cursor: pointer;
 }
@@ -171,49 +192,43 @@
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 24px;
-  height: 24px;
-  background: var(--gradient-primary);
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(305deg, #FEDA3B -2.67%, #EF5541 38.9%, #801FDB 77.17%, #7E2A89 98.46%);
   border-radius: 50%;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 166, 81, 0.4);
-  transition: transform var(--transition-fast);
-}
-
-.slider::-webkit-slider-thumb:hover {
-  transform: scale(1.1);
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.4);
 }
 
 .slider::-moz-range-thumb {
-  width: 24px;
-  height: 24px;
-  background: var(--gradient-primary);
-  border: none;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(305deg, #FEDA3B -2.67%, #EF5541 38.9%, #801FDB 77.17%, #7E2A89 98.46%);
   border-radius: 50%;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 166, 81, 0.4);
+  border: none;
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.4);
 }
 
 .sliderDots {
   display: flex;
   justify-content: space-between;
   margin-top: 12px;
-  padding: 0 8px;
+  padding: 0 2px;
 }
 
 .dot {
-  width: 10px;
-  height: 10px;
-  background: var(--border-color);
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
   transition: all var(--transition-fast);
 }
 
 .activeDot {
-  background: var(--finam-primary);
+  background: #A78BFA;
 }
 
-/* Submit Button */
 .submitButton {
   display: flex;
   align-items: center;
@@ -221,20 +236,22 @@
   gap: 10px;
   width: 100%;
   padding: 18px 32px;
-  font-family: inherit;
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--bg-dark);
-  background: var(--gradient-primary);
+  background: linear-gradient(305deg, #FEDA3B -2.67%, #EF5541 38.9%, #801FDB 77.17%, #7E2A89 98.46%);
   border: none;
-  border-radius: 14px;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.204px;
+  color: #FFF;
   cursor: pointer;
   transition: all var(--transition-base);
 }
 
 .submitButton:hover:not(:disabled) {
+  opacity: 0.9;
   transform: translateY(-2px);
-  box-shadow: var(--shadow-glow);
 }
 
 .submitButton:disabled {
@@ -245,8 +262,8 @@
 .spinner {
   width: 20px;
   height: 20px;
-  border: 2px solid transparent;
-  border-top-color: currentColor;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #FFF;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
@@ -257,59 +274,87 @@
   }
 }
 
-/* Success State */
+/* Success state */
 .successCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   padding: 60px 40px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  max-width: 520px;
+  margin: 0 auto;
 }
 
 .successIcon {
-  display: inline-flex;
-  color: var(--finam-primary);
+  color: #4ADE80;
   margin-bottom: 24px;
 }
 
 .successTitle {
+  font-family: 'Inter Tight', var(--font-inter-tight), sans-serif;
   font-size: 28px;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 12px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.56px;
+  color: #FFF;
+  margin-bottom: 16px;
 }
 
 .successText {
+  font-family: 'Inter', sans-serif;
   font-size: 16px;
-  color: var(--text-secondary);
-  line-height: 1.6;
+  font-weight: 400;
+  line-height: 24px;
+  color: rgba(255, 255, 255, 0.72);
   margin-bottom: 32px;
-  max-width: 400px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .successButton {
-  display: inline-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 14px 28px;
-  font-family: inherit;
+  background: transparent;
+  border: 1px solid #A55AFF;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
   font-size: 15px;
   font-weight: 600;
-  color: var(--finam-primary);
-  background: transparent;
-  border: 2px solid var(--finam-primary);
-  border-radius: 12px;
+  color: #FFF;
   cursor: pointer;
   transition: all var(--transition-base);
 }
 
 .successButton:hover {
-  background: rgba(0, 166, 81, 0.1);
+  background: rgba(255, 255, 255, 0.1);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1024px) {
+  .container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .form {
+    padding: 60px 24px;
+  }
+  
+  .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
+  .title {
+    font-size: 28px;
+  }
+  
   .formCard {
-    padding: 28px 20px;
+    padding: 24px;
   }
   
   .formGrid {
@@ -318,16 +363,11 @@
   }
   
   .searchTypeButtons {
-    grid-template-columns: 1fr;
+    flex-direction: column;
   }
   
   .searchTypeBtn {
-    flex-direction: row;
+    width: 100%;
     justify-content: center;
-    padding: 16px;
-  }
-  
-  .btnIcon {
-    font-size: 22px;
   }
 }
