@@ -195,31 +195,6 @@ export function FAQ() {
           ))}
         </div>
         
-        <motion.div
-          className={styles.contact}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className={styles.contactIcon}>
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-              <path d="M28 22V26C28 26.5304 27.7893 27.0391 27.4142 27.4142C27.0391 27.7893 26.5304 28 26 28H6C5.46957 28 4.96086 27.7893 4.58579 27.4142C4.21071 27.0391 4 26.5304 4 26V22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M16 4V20M16 20L22 14M16 20L10 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </div>
-          <h3 className={styles.contactTitle}>Не нашёл ответ?</h3>
-          <p className={styles.contactText}>
-            Напиши нам напрямую — мы ответим в течение 3 рабочих дней
-          </p>
-          <a href="mailto:tvoycollab@corp.finam.ru" className={styles.contactButton}>
-            <span>tvoycollab@corp.finam.ru</span>
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-              <path d="M3 6L9 10L15 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <rect x="2" y="4" width="14" height="10" rx="2" stroke="currentColor" strokeWidth="1.5"/>
-            </svg>
-          </a>
-        </motion.div>
       </div>
     </section>
   )
