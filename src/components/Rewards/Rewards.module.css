@@ -1,0 +1,160 @@
+.section {
+  padding: 80px 24px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.title {
+  font-size: clamp(32px, 4vw, 44px);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  font-size: 17px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.table {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.tableHeader {
+  display: grid;
+  grid-template-columns: 1fr 180px;
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.tableHeaderCell {
+  padding: 18px 28px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+}
+
+.tableRow {
+  display: grid;
+  grid-template-columns: 1fr 180px;
+  border-bottom: 1px solid var(--border-light);
+  transition: background var(--transition-fast);
+}
+
+.tableRow:last-child {
+  border-bottom: none;
+}
+
+.tableRow:hover {
+  background: var(--bg-card-hover);
+}
+
+.tableCell {
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.tableCell:last-child {
+  justify-content: center;
+}
+
+.scenarioIcon {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.scenarioText {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.scenarioText strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.rewardAmount {
+  font-size: 28px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #FFD700 0%, #FF6B35 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.rewardAmount.premium {
+  font-size: 32px;
+}
+
+.note {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 24px;
+  background: rgba(255, 215, 0, 0.06);
+  border: 1px solid rgba(255, 215, 0, 0.15);
+  border-radius: 12px;
+}
+
+.noteIcon {
+  color: var(--finam-accent);
+  flex-shrink: 0;
+}
+
+.note span {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.note strong {
+  color: var(--text-primary);
+}
+
+@media (max-width: 700px) {
+  .tableHeader {
+    display: none;
+  }
+  
+  .tableRow {
+    grid-template-columns: 1fr;
+  }
+  
+  .tableCell {
+    padding: 20px;
+  }
+  
+  .tableCell:last-child {
+    justify-content: flex-start;
+    padding-top: 0;
+    border-top: none;
+  }
+  
+  .rewardAmount {
+    font-size: 24px;
+  }
+  
+  .rewardAmount.premium {
+    font-size: 28px;
+  }
+}

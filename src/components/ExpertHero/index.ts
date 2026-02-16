@@ -1,0 +1,1 @@
+export { ExpertHero } from './ExpertHero'
