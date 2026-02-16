@@ -1,28 +1,50 @@
 .form {
+  position: relative;
   background-color: #0D0512;
-  padding: 80px 40px;
+  padding: 100px 40px;
+  overflow: hidden;
+}
+
+.backgroundGlow {
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  width: 529px;
+  height: 207px;
+  background: radial-gradient(ellipse at center, rgba(239, 85, 65, 0.3) 0%, rgba(128, 31, 219, 0.15) 50%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .container {
-  max-width: 1440px;
+  max-width: 1130px;
   margin: 0 auto;
-  padding-left: 115px;
-  padding-right: 115px;
+  position: relative;
+  z-index: 2;
+}
+
+.layout {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
 }
 
 .header {
-  text-align: left;
-  margin-bottom: 48px;
+  flex: 0 0 519px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .title {
   font-family: 'Inter Tight', var(--font-inter-tight), sans-serif;
-  font-size: 36px;
+  font-size: 52px;
   font-weight: 400;
-  line-height: 1.15;
-  letter-spacing: -0.72px;
+  line-height: 56px;
+  letter-spacing: -1.04px;
   color: #FFF;
-  margin-bottom: 12px;
 }
 
 .subtitle {
@@ -32,141 +54,200 @@
   line-height: 24px;
   letter-spacing: -0.17px;
   color: rgba(255, 255, 255, 0.72);
+  max-width: 519px;
 }
 
-.formCard {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  padding: 40px;
-  max-width: 720px;
+.formFields {
+  flex: 0 0 557px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-end;
 }
 
-.formGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  margin-bottom: 28px;
+/* Input wrapper */
+.inputWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 557px;
+  background: rgba(192, 192, 204, 0.16);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 8px 12px 8px 16px;
+  gap: 8px;
+  transition: all 0.2s ease;
 }
 
-.formGroup {
-  margin-bottom: 28px;
+.inputWrapper.focused {
+  background: rgba(79, 79, 89, 0);
+  border-color: #FFE479;
+  box-shadow: 0 0 0 3px rgba(255, 186, 48, 0.16);
 }
 
-.formGroup:last-of-type {
-  margin-bottom: 32px;
+.inputWrapper.filled:not(.focused) {
+  background: rgba(192, 192, 204, 0.16);
 }
 
-.label {
+.inputLabel {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #6F6F7C;
+  margin-bottom: 0;
+  transition: color 0.2s ease;
+}
+
+.inputWrapper.focused .inputLabel {
+  color: #E08F05;
+}
+
+.input {
+  width: 100%;
+  padding: 8px 0;
+  background: transparent;
+  border: none;
+  color: #FFF;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.128px;
+  outline: none;
+}
+
+.input::placeholder {
+  color: #A4A4B2;
+}
+
+.textarea {
+  width: 100%;
+  padding: 8px 0;
+  background: transparent;
+  border: none;
+  color: #FFF;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.128px;
+  outline: none;
+  resize: none;
+  min-height: 72px;
+}
+
+.textarea::placeholder {
+  color: #A4A4B2;
+}
+
+/* Select dropdown */
+.searchTypeSelect {
+  position: relative;
+  width: 100%;
+}
+
+.selectDisplay {
   display: flex;
   align-items: center;
-  gap: 4px;
+  justify-content: space-between;
+  padding: 8px 0;
+  cursor: pointer;
+}
+
+.selectedValue {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.128px;
+  color: #FFF;
+}
+
+.placeholder {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.128px;
+  color: #6F6F7C;
+}
+
+.selectArrow {
+  color: #6F6F7C;
+  transition: transform 0.2s ease;
+}
+
+.inputWrapper.focused .selectArrow {
+  transform: rotate(180deg);
+}
+
+.selectDropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: -16px;
+  width: calc(100% + 28px);
+  background: #1A1A1F;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 8px;
+  z-index: 10;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.selectDropdown button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: background 0.2s ease;
+  text-align: left;
+}
+
+.selectDropdown button:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.optionIcon {
+  font-size: 18px;
+}
+
+/* Priority section */
+.prioritySection {
+  width: 557px;
+  padding: 12px 0;
+}
+
+.priorityHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.priorityLabel {
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
   color: rgba(255, 255, 255, 0.72);
-  margin-bottom: 10px;
-}
-
-.required {
-  color: #EF5541;
 }
 
 .priorityValue {
-  margin-left: auto;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
   font-weight: 400;
   color: #A78BFA;
 }
 
-.input {
-  width: 100%;
-  padding: 16px 20px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  color: #FFF;
-  font-family: 'Inter', sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  transition: all var(--transition-base);
-}
-
-.input::placeholder {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.input:focus {
-  outline: none;
-  border-color: rgba(168, 85, 247, 0.5);
-  box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.2);
-}
-
-.textarea {
-  width: 100%;
-  padding: 16px 20px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  color: #FFF;
-  font-family: 'Inter', sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  resize: vertical;
-  min-height: 140px;
-  transition: all var(--transition-base);
-}
-
-.textarea::placeholder {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.textarea:focus {
-  outline: none;
-  border-color: rgba(168, 85, 247, 0.5);
-  box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.2);
-}
-
-.searchTypeButtons {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.searchTypeBtn {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 20px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  font-family: 'Inter', sans-serif;
-  font-size: 15px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.72);
-  cursor: pointer;
-  transition: all var(--transition-base);
-}
-
-.searchTypeBtn:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.3);
-}
-
-.searchTypeBtn.active {
-  background: rgba(168, 85, 247, 0.15);
-  border-color: rgba(168, 85, 247, 0.5);
-  color: #FFF;
-}
-
-.btnIcon {
-  font-size: 18px;
-}
-
 .sliderWrapper {
   position: relative;
-  padding: 8px 0;
+  padding: 4px 0;
 }
 
 .sliderLabels {
@@ -175,7 +256,7 @@
   font-family: 'Inter', sans-serif;
   font-size: 12px;
   color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .slider {
@@ -213,7 +294,7 @@
 .sliderDots {
   display: flex;
   justify-content: space-between;
-  margin-top: 12px;
+  margin-top: 10px;
   padding: 0 2px;
 }
 
@@ -222,23 +303,24 @@
   height: 8px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.2);
-  transition: all var(--transition-fast);
+  transition: all 0.2s ease;
 }
 
 .activeDot {
   background: #A78BFA;
 }
 
+/* Submit button */
 .submitButton {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  width: 100%;
-  padding: 18px 32px;
+  width: 557px;
+  padding: 16px 24px;
   background: linear-gradient(305deg, #FEDA3B -2.67%, #EF5541 38.9%, #801FDB 77.17%, #7E2A89 98.46%);
   border: none;
-  border-radius: 12px;
+  border-radius: 8px;
   font-family: 'Inter', sans-serif;
   font-size: 17px;
   font-weight: 600;
@@ -246,12 +328,12 @@
   letter-spacing: -0.204px;
   color: #FFF;
   cursor: pointer;
-  transition: all var(--transition-base);
+  transition: all 0.2s ease;
 }
 
 .submitButton:hover:not(:disabled) {
   opacity: 0.9;
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .submitButton:disabled {
@@ -325,49 +407,61 @@
   font-weight: 600;
   color: #FFF;
   cursor: pointer;
-  transition: all var(--transition-base);
+  transition: all 0.2s ease;
 }
 
 .successButton:hover {
   background: rgba(255, 255, 255, 0.1);
 }
 
-@media (max-width: 1024px) {
-  .container {
-    padding-left: 40px;
-    padding-right: 40px;
+/* Responsive */
+@media (max-width: 1200px) {
+  .layout {
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .header {
+    flex: none;
+    width: 100%;
+  }
+  
+  .formFields {
+    flex: none;
+    width: 100%;
+    align-items: flex-start;
+  }
+  
+  .title {
+    font-size: 44px;
+    line-height: 48px;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .form {
     padding: 60px 24px;
   }
   
-  .container {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  
   .title {
-    font-size: 28px;
+    font-size: 36px;
+    line-height: 40px;
+    letter-spacing: -0.72px;
   }
   
-  .formCard {
-    padding: 24px;
+  .subtitle {
+    font-size: 15px;
+    line-height: 22px;
   }
   
-  .formGrid {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-  
-  .searchTypeButtons {
-    flex-direction: column;
-  }
-  
-  .searchTypeBtn {
+  .inputWrapper,
+  .prioritySection,
+  .submitButton {
     width: 100%;
-    justify-content: center;
+  }
+  
+  .backgroundGlow {
+    width: 100%;
+    height: 150px;
   }
 }

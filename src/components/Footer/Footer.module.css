@@ -1,6 +1,5 @@
 .footer {
   background-color: #0D0512;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .container {
@@ -10,50 +9,79 @@
 }
 
 .contactBanner {
-  padding: 32px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  padding: 60px 0;
+  overflow: hidden;
+}
+
+.contactGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 300px;
+  background: radial-gradient(ellipse at center, rgba(128, 31, 219, 0.2) 0%, rgba(239, 85, 65, 0.1) 40%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .contactContent {
+  position: relative;
+  z-index: 2;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 20px;
-  padding: 28px 32px;
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(126, 42, 137, 0.08) 100%);
-  border: 1px solid rgba(168, 85, 247, 0.2);
-  border-radius: 16px;
-  justify-content: center;
+  gap: 24px;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-.contactIcon {
-  font-size: 32px;
+.contactIconWrapper {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+}
+
+.contactIconWrapper svg {
+  width: 48px;
+  height: 48px;
 }
 
 .contactText {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 12px;
+  align-items: center;
 }
 
-.contactLabel {
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
+.contactTitle {
+  font-family: 'Inter Tight', var(--font-inter-tight), sans-serif;
+  font-size: 32px;
   font-weight: 400;
-  line-height: 20px;
-  color: rgba(255, 255, 255, 0.72);
+  line-height: 40px;
+  letter-spacing: -0.64px;
+  color: #FFF;
 }
 
 .contactEmail {
-  font-family: 'Inter Tight', var(--font-inter-tight), sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 20px;
   font-weight: 500;
-  line-height: 1.3;
-  letter-spacing: -0.4px;
+  line-height: 28px;
+  letter-spacing: -0.2px;
   background: linear-gradient(305deg, #FEDA3B -2.67%, #EF5541 38.9%, #801FDB 77.17%, #7E2A89 98.46%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  transition: opacity var(--transition-base);
+  transition: opacity 0.2s ease;
 }
 
 .contactEmail:hover {
@@ -72,37 +100,12 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  flex-shrink: 0;
 }
 
-.logoIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.logoIcon svg {
-  width: 32px;
-  height: 32px;
-}
-
-.logoIcon svg rect {
-  fill: url(#footer-logo-gradient-new);
-}
-
-.logoText {
-  font-family: 'Inter Tight', var(--font-inter-tight), sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  color: #FFF;
-  letter-spacing: -0.16px;
-}
-
-.logoAccent {
-  background: linear-gradient(305deg, #FEDA3B -2.67%, #EF5541 38.9%, #801FDB 77.17%, #7E2A89 98.46%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.logo svg {
+  height: 38px;
+  width: auto;
 }
 
 .nav {
@@ -150,13 +153,34 @@
     padding: 0 24px;
   }
   
-  .contactContent {
-    flex-direction: column;
-    text-align: center;
-    padding: 24px;
+  .contactBanner {
+    padding: 40px 0;
+  }
+  
+  .contactIconWrapper {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+  }
+  
+  .contactIconWrapper svg {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .contactTitle {
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -0.48px;
   }
   
   .contactEmail {
     font-size: 18px;
+    line-height: 26px;
+  }
+  
+  .contactGlow {
+    width: 100%;
+    height: 200px;
   }
 }

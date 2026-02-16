@@ -3,55 +3,53 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  padding: 140px 40px 80px;
+  padding: 140px 40px 112px;
   background-color: #0D0512;
   overflow: hidden;
 }
 
-.backgroundEffect {
+.backgroundImage {
   position: absolute;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  height: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: 
-    radial-gradient(ellipse 80% 50% at 50% 20%, rgba(128, 31, 219, 0.15) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 40% at 30% 30%, rgba(239, 85, 65, 0.1) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 40% at 70% 40%, rgba(254, 218, 59, 0.08) 0%, transparent 50%);
+    radial-gradient(ellipse 120% 80% at 80% 50%, rgba(128, 31, 219, 0.25) 0%, transparent 50%),
+    radial-gradient(ellipse 80% 60% at 20% 30%, rgba(239, 85, 65, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse 100% 80% at 60% 80%, rgba(254, 218, 59, 0.08) 0%, transparent 40%);
+  opacity: 0.6;
   pointer-events: none;
   z-index: 1;
 }
 
-.container {
-  width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding-left: 155px;
-  padding-right: 155px;
-  position: relative;
+.backgroundOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(13, 5, 18, 0) 0%, rgba(13, 5, 18, 0.8) 100%);
+  pointer-events: none;
   z-index: 2;
 }
 
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 20px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 100px;
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.72);
-  margin-bottom: 32px;
+.container {
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 3;
 }
 
-.badgeIcon {
-  font-size: 18px;
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+  max-width: 750px;
 }
 
 .title {
@@ -61,155 +59,127 @@
   line-height: 64px;
   letter-spacing: -1.24px;
   color: #FFF;
-  margin-bottom: 24px;
-  max-width: 900px;
-}
-
-.titleAccent {
-  background: linear-gradient(305deg, #FEDA3B -2.67%, #EF5541 38.9%, #801FDB 77.17%, #7E2A89 98.46%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  margin: 0;
 }
 
 .description {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.description p {
   font-family: 'Inter', sans-serif;
   font-size: 17px;
   font-weight: 400;
   line-height: 24px;
   letter-spacing: -0.17px;
   color: rgba(255, 255, 255, 0.72);
-  max-width: 720px;
-  margin-bottom: 40px;
+  margin: 0;
 }
 
-.collabInfo {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  padding: 24px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  max-width: 720px;
-  margin-bottom: 48px;
-}
-
-.collabIcon {
-  display: flex;
+.ctaButton {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  padding: 16px 32px;
   background: linear-gradient(305deg, #FEDA3B -2.67%, #EF5541 38.9%, #801FDB 77.17%, #7E2A89 98.46%);
-  border-radius: 12px;
-  color: white;
-  flex-shrink: 0;
-}
-
-.collabInfo p {
+  border-radius: 8px;
   font-family: 'Inter', sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
-  letter-spacing: -0.17px;
-  color: rgba(255, 255, 255, 0.72);
-}
-
-.collabInfo strong {
-  background: linear-gradient(305deg, #FEDA3B -2.67%, #EF5541 38.9%, #801FDB 77.17%, #7E2A89 98.46%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-size: 17px;
   font-weight: 600;
-}
-
-.processSteps {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-
-.step {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 16px 24px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  transition: all var(--transition-base);
-}
-
-.step:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(168, 85, 247, 0.3);
-  transform: translateY(-2px);
-}
-
-.stepNum {
-  font-family: 'Inter', sans-serif;
-  font-size: 12px;
-  font-weight: 700;
-  color: #A78BFA;
-  padding: 4px 8px;
-  background: rgba(168, 85, 247, 0.15);
-  border-radius: 6px;
-}
-
-.stepText {
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: -0.204px;
   color: #FFF;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  margin-top: 8px;
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(239, 85, 65, 0.4);
+  filter: brightness(1.1);
+}
+
+.heroImageBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.heroImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
 }
 
 @media (max-width: 1200px) {
-  .container {
-    padding-left: 80px;
-    padding-right: 80px;
+  .hero {
+    padding: 120px 40px 80px;
   }
-  
+
   .title {
     font-size: 48px;
     line-height: 52px;
     letter-spacing: -0.96px;
   }
+
+  .content {
+    max-width: 600px;
+  }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .hero {
     padding: 120px 24px 60px;
+    min-height: auto;
   }
-  
-  .container {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  
+
   .title {
-    font-size: 36px;
-    line-height: 40px;
-    letter-spacing: -0.72px;
+    font-size: 40px;
+    line-height: 44px;
+    letter-spacing: -0.8px;
   }
-  
-  .description {
+
+  .content {
+    max-width: 100%;
+  }
+
+  .heroImageBg {
+    opacity: 0.5;
+  }
+
+  .description p {
     font-size: 15px;
     line-height: 22px;
   }
-  
-  .processSteps {
-    flex-direction: column;
-    gap: 12px;
-  }
-  
-  .step {
+
+  .ctaButton {
     width: 100%;
+    justify-content: center;
   }
-  
-  .collabInfo {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 110px 16px 40px;
+  }
+
+  .title {
+    font-size: 32px;
+    line-height: 36px;
+    letter-spacing: -0.64px;
+  }
+
+  .ctaButton {
+    padding: 14px 24px;
+    font-size: 15px;
   }
 }

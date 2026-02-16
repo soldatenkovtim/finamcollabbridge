@@ -1,108 +1,131 @@
 .warning {
-  background-color: #0D0512;
-  padding: 80px 40px;
+  position: relative;
+  background-color: #000;
+  padding: 100px 40px;
+  overflow: hidden;
+}
+
+.backgroundGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 827px;
+  height: 339px;
+  background: radial-gradient(ellipse at center, rgba(128, 31, 219, 0.3) 0%, rgba(239, 85, 65, 0.15) 40%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .container {
-  max-width: 1440px;
+  max-width: 1130px;
   margin: 0 auto;
-  padding-left: 115px;
-  padding-right: 115px;
+  position: relative;
+  z-index: 2;
 }
 
-.card {
-  display: flex;
-  gap: 24px;
-  padding: 32px;
-  background: rgba(239, 85, 65, 0.08);
-  border: 1px solid rgba(239, 85, 65, 0.2);
-  border-radius: 16px;
+.header {
+  text-align: center;
+  margin-bottom: 40px;
 }
 
-.iconWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 56px;
-  height: 56px;
-  background: linear-gradient(305deg, #FEDA3B -2.67%, #EF5541 38.9%, #801FDB 77.17%, #7E2A89 98.46%);
-  border-radius: 12px;
-  color: white;
-  flex-shrink: 0;
-}
-
-.content {
-  flex: 1;
-}
-
-.title {
+.heading {
   font-family: 'Inter Tight', var(--font-inter-tight), sans-serif;
-  font-size: 24px;
-  font-weight: 500;
-  line-height: 1.2;
-  letter-spacing: -0.48px;
+  font-size: 52px;
+  font-weight: 400;
+  line-height: 56px;
+  letter-spacing: -1.04px;
   color: #FFF;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
-.text {
+.subtitle {
   font-family: 'Inter', sans-serif;
   font-size: 17px;
   font-weight: 400;
   line-height: 24px;
   letter-spacing: -0.17px;
-  color: rgba(255, 255, 255, 0.72);
-  margin-bottom: 20px;
+  color: #a4a4b2;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-.points {
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.card {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-bottom: 24px;
+  justify-content: space-between;
+  background-color: #141414;
+  border-radius: 8px;
+  padding: 30px;
+  min-height: 280px;
+  transition: all 0.3s ease;
 }
 
-.points p {
+.card:hover {
+  background-color: #1a1a1a;
+  transform: translateY(-4px);
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cardTitle {
   font-family: 'Inter', sans-serif;
-  font-size: 15px;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: -0.384px;
+  color: #FFF;
+}
+
+.cardDescription {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
   font-weight: 400;
-  line-height: 22px;
-  letter-spacing: -0.15px;
-  color: rgba(255, 255, 255, 0.72);
+  line-height: 24px;
+  letter-spacing: -0.17px;
+  color: #a4a4b2;
 }
 
-.points strong {
-  background: linear-gradient(305deg, #FEDA3B -2.67%, #EF5541 38.9%, #801FDB 77.17%, #7E2A89 98.46%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-weight: 600;
+.cardIcon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
 }
 
-.highlight {
-  color: #A78BFA;
-  font-weight: 500;
+.cardIcon svg {
+  width: 60px;
+  height: 60px;
 }
 
-.cta {
-  font-family: 'Inter', sans-serif;
-  font-size: 15px;
-  line-height: 22px;
+@media (max-width: 1200px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .heading {
+    font-size: 44px;
+    line-height: 48px;
+  }
 }
 
-.ctaGreen {
-  color: #4ADE80;
-  font-weight: 500;
-}
-
-.ctaMuted {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-@media (max-width: 1024px) {
-  .container {
-    padding-left: 40px;
-    padding-right: 40px;
+@media (max-width: 900px) {
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
 }
 
@@ -111,26 +134,38 @@
     padding: 60px 24px;
   }
   
-  .container {
-    padding-left: 0;
-    padding-right: 0;
+  .heading {
+    font-size: 36px;
+    line-height: 40px;
+    letter-spacing: -0.72px;
+  }
+  
+  .subtitle {
+    font-size: 15px;
+    line-height: 22px;
+  }
+  
+  .header {
+    margin-bottom: 32px;
   }
   
   .card {
-    flex-direction: column;
+    min-height: auto;
     padding: 24px;
   }
   
-  .iconWrapper {
-    width: 48px;
-    height: 48px;
-  }
-  
-  .title {
+  .cardTitle {
     font-size: 20px;
+    line-height: 24px;
   }
   
-  .text {
+  .cardDescription {
     font-size: 15px;
+    line-height: 22px;
+  }
+  
+  .backgroundGlow {
+    width: 100%;
+    height: 200px;
   }
 }
