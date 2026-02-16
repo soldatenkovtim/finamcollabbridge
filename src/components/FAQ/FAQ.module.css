@@ -1,7 +1,8 @@
 .faq {
   position: relative;
-  padding: 160px 24px 100px;
+  padding: 160px 40px 100px;
   min-height: 100vh;
+  background-color: #0D0512;
   overflow: hidden;
 }
 
@@ -10,9 +11,11 @@
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 1000px;
+  width: 100%;
   height: 600px;
-  background: radial-gradient(ellipse at center, rgba(0, 166, 81, 0.08) 0%, transparent 70%);
+  background: 
+    radial-gradient(ellipse 80% 50% at 50% 20%, rgba(128, 31, 219, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 30% 30%, rgba(239, 85, 65, 0.08) 0%, transparent 50%);
   pointer-events: none;
 }
 
@@ -33,12 +36,13 @@
   align-items: center;
   gap: 10px;
   padding: 10px 20px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 100px;
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.72);
   margin-bottom: 24px;
 }
 
@@ -47,9 +51,11 @@
 }
 
 .title {
+  font-family: 'Inter Tight', var(--font-inter-tight), sans-serif;
   font-size: clamp(48px, 6vw, 72px);
-  font-weight: 800;
-  background: var(--gradient-primary);
+  font-weight: 400;
+  letter-spacing: -1.44px;
+  background: linear-gradient(305deg, #FEDA3B -2.67%, #EF5541 38.9%, #801FDB 77.17%, #7E2A89 98.46%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -57,8 +63,11 @@
 }
 
 .subtitle {
+  font-family: 'Inter', sans-serif;
   font-size: 18px;
-  color: var(--text-secondary);
+  font-weight: 400;
+  line-height: 26px;
+  color: rgba(255, 255, 255, 0.72);
 }
 
 /* FAQ List */
@@ -70,20 +79,20 @@
 }
 
 .item {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   overflow: hidden;
   transition: all var(--transition-base);
 }
 
 .item:hover {
-  border-color: rgba(0, 166, 81, 0.2);
+  border-color: rgba(168, 85, 247, 0.2);
 }
 
 .item.open {
-  border-color: rgba(0, 166, 81, 0.3);
-  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(0, 166, 81, 0.03) 100%);
+  border-color: rgba(168, 85, 247, 0.3);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(168, 85, 247, 0.05) 100%);
 }
 
 .question {
@@ -106,9 +115,10 @@
 }
 
 .questionText {
+  font-family: 'Inter Tight', var(--font-inter-tight), sans-serif;
   font-size: 16px;
-  font-weight: 600;
-  color: var(--text-primary);
+  font-weight: 500;
+  color: #FFF;
   line-height: 1.5;
 }
 
@@ -118,7 +128,7 @@
   justify-content: center;
   width: 32px;
   height: 32px;
-  color: var(--finam-primary);
+  color: #A78BFA;
   flex-shrink: 0;
   transition: transform var(--transition-base);
 }
@@ -136,9 +146,10 @@
 }
 
 .answer p {
+  font-family: 'Inter', sans-serif;
   font-size: 15px;
   line-height: 1.7;
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.72);
   margin-bottom: 16px;
 }
 
@@ -150,23 +161,26 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  color: var(--finam-primary);
+  color: #A78BFA;
   font-weight: 500;
   transition: color var(--transition-fast);
 }
 
 .inlineLink:hover {
-  color: var(--finam-primary-light);
+  color: #c4b5fd;
 }
 
 .emailLink {
-  color: var(--finam-primary);
+  background: linear-gradient(305deg, #FEDA3B -2.67%, #EF5541 38.9%, #801FDB 77.17%, #7E2A89 98.46%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   font-weight: 600;
-  transition: color var(--transition-fast);
+  transition: opacity var(--transition-fast);
 }
 
 .emailLink:hover {
-  color: var(--finam-primary-light);
+  opacity: 0.8;
 }
 
 .linkButton {
@@ -174,25 +188,26 @@
   align-items: center;
   gap: 8px;
   padding: 12px 20px;
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
   font-weight: 600;
-  color: var(--bg-dark);
-  background: var(--gradient-primary);
+  color: #FFF;
+  background: linear-gradient(305deg, #FEDA3B -2.67%, #EF5541 38.9%, #801FDB 77.17%, #7E2A89 98.46%);
   border-radius: 10px;
   transition: all var(--transition-base);
 }
 
 .linkButton:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-glow);
+  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.3);
 }
 
 /* Contact Section */
 .contact {
   text-align: center;
   padding: 48px 40px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 24px;
 }
 
@@ -202,22 +217,27 @@
   justify-content: center;
   width: 64px;
   height: 64px;
-  background: var(--gradient-primary);
+  background: linear-gradient(305deg, #FEDA3B -2.67%, #EF5541 38.9%, #801FDB 77.17%, #7E2A89 98.46%);
   border-radius: 16px;
   color: white;
   margin-bottom: 20px;
 }
 
 .contactTitle {
+  font-family: 'Inter Tight', var(--font-inter-tight), sans-serif;
   font-size: 24px;
-  font-weight: 700;
-  color: var(--text-primary);
+  font-weight: 500;
+  letter-spacing: -0.48px;
+  color: #FFF;
   margin-bottom: 8px;
 }
 
 .contactText {
+  font-family: 'Inter', sans-serif;
   font-size: 15px;
-  color: var(--text-secondary);
+  font-weight: 400;
+  line-height: 22px;
+  color: rgba(255, 255, 255, 0.72);
   margin-bottom: 24px;
 }
 
@@ -226,22 +246,23 @@
   align-items: center;
   gap: 10px;
   padding: 16px 28px;
+  font-family: 'Inter', sans-serif;
   font-size: 16px;
-  font-weight: 700;
-  color: var(--bg-dark);
-  background: var(--gradient-primary);
+  font-weight: 600;
+  color: #FFF;
+  background: linear-gradient(305deg, #FEDA3B -2.67%, #EF5541 38.9%, #801FDB 77.17%, #7E2A89 98.46%);
   border-radius: 12px;
   transition: all var(--transition-base);
 }
 
 .contactButton:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-glow);
+  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.3);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .faq {
-    padding: 120px 16px 80px;
+    padding: 120px 24px 80px;
   }
   
   .question {

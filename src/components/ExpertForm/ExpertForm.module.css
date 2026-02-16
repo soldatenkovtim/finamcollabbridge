@@ -1,6 +1,6 @@
 .form {
-  padding: 80px 24px 100px;
-  background: var(--bg-card);
+  background: rgba(255, 255, 255, 0.02);
+  padding: 80px 40px 100px;
 }
 
 .container {
@@ -14,21 +14,27 @@
 }
 
 .title {
-  font-size: clamp(32px, 4vw, 44px);
-  font-weight: 800;
-  color: var(--text-primary);
+  font-family: 'Inter Tight', var(--font-inter-tight), sans-serif;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.72px;
+  color: #FFF;
   margin-bottom: 12px;
 }
 
 .subtitle {
+  font-family: 'Inter', sans-serif;
   font-size: 18px;
-  color: var(--text-secondary);
+  font-weight: 400;
+  line-height: 26px;
+  color: rgba(255, 255, 255, 0.72);
 }
 
 .formCard {
   padding: 40px;
-  background: var(--bg-dark);
-  border: 1px solid var(--border-light);
+  background: #0D0512;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 24px;
 }
 
@@ -51,20 +57,21 @@
   display: flex;
   align-items: center;
   gap: 6px;
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
-  font-weight: 600;
-  color: var(--text-primary);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.72);
   margin-bottom: 12px;
 }
 
 .required {
-  color: var(--finam-accent-orange);
+  color: #EF5541;
 }
 
 .optional {
   font-size: 12px;
   font-weight: 400;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.5);
   margin-left: 4px;
 }
 
@@ -72,11 +79,11 @@
 .textarea {
   width: 100%;
   padding: 16px 20px;
-  font-family: inherit;
+  font-family: 'Inter', sans-serif;
   font-size: 15px;
-  color: var(--text-primary);
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
+  color: #FFF;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 12px;
   outline: none;
   transition: all var(--transition-fast);
@@ -84,18 +91,18 @@
 
 .input::placeholder,
 .textarea::placeholder {
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .input:hover,
 .textarea:hover {
-  border-color: var(--text-muted);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .input:focus,
 .textarea:focus {
-  border-color: var(--finam-accent);
-  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+  border-color: rgba(168, 85, 247, 0.5);
+  box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.2);
 }
 
 .textarea {
@@ -119,35 +126,37 @@
   justify-content: center;
   gap: 12px;
   padding: 32px 24px;
-  background: var(--bg-card);
-  border: 2px dashed var(--border-color);
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px dashed rgba(255, 255, 255, 0.2);
   border-radius: 14px;
   cursor: pointer;
   transition: all var(--transition-base);
 }
 
 .fileLabel:hover {
-  border-color: var(--finam-accent);
-  background: rgba(255, 215, 0, 0.02);
+  border-color: rgba(168, 85, 247, 0.5);
+  background: rgba(168, 85, 247, 0.05);
 }
 
 .fileIcon {
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .filePlaceholder {
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.72);
   text-align: center;
 }
 
 .filePlaceholder strong {
-  color: var(--finam-accent);
+  color: #A78BFA;
 }
 
 .fileHint {
+  font-family: 'Inter', sans-serif;
   font-size: 12px;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .filePreview {
@@ -155,15 +164,16 @@
   align-items: center;
   gap: 14px;
   padding: 18px 20px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 14px;
 }
 
 .fileName {
   flex: 1;
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
-  color: var(--text-primary);
+  color: #FFF;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -177,15 +187,15 @@
   height: 32px;
   background: transparent;
   border: none;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
   border-radius: 8px;
   transition: all var(--transition-fast);
 }
 
 .removeFile:hover {
-  background: rgba(255, 107, 53, 0.1);
-  color: var(--finam-accent-orange);
+  background: rgba(239, 85, 65, 0.1);
+  color: #EF5541;
 }
 
 /* Submit Button */
@@ -196,11 +206,13 @@
   gap: 10px;
   width: 100%;
   padding: 18px 32px;
-  font-family: inherit;
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--bg-dark);
-  background: linear-gradient(135deg, #FFD700 0%, #FF6B35 100%);
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.204px;
+  color: #FFF;
+  background: linear-gradient(305deg, #FEDA3B -2.67%, #EF5541 38.9%, #801FDB 77.17%, #7E2A89 98.46%);
   border: none;
   border-radius: 14px;
   cursor: pointer;
@@ -209,7 +221,7 @@
 
 .submitButton:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.3);
 }
 
 .submitButton:disabled {
@@ -220,8 +232,8 @@
 .spinner {
   width: 20px;
   height: 20px;
-  border: 2px solid transparent;
-  border-top-color: currentColor;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #FFF;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
@@ -236,28 +248,32 @@
 .successCard {
   text-align: center;
   padding: 60px 40px;
-  background: var(--bg-dark);
-  border: 1px solid var(--border-light);
+  background: #0D0512;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 24px;
 }
 
 .successIcon {
   display: inline-flex;
-  color: var(--finam-accent);
+  color: #4ADE80;
   margin-bottom: 24px;
 }
 
 .successTitle {
+  font-family: 'Inter Tight', var(--font-inter-tight), sans-serif;
   font-size: 28px;
-  font-weight: 700;
-  color: var(--text-primary);
+  font-weight: 500;
+  letter-spacing: -0.56px;
+  color: #FFF;
   margin-bottom: 12px;
 }
 
 .successText {
+  font-family: 'Inter', sans-serif;
   font-size: 16px;
-  color: var(--text-secondary);
-  line-height: 1.6;
+  font-weight: 400;
+  line-height: 24px;
+  color: rgba(255, 255, 255, 0.72);
   margin-bottom: 32px;
   max-width: 400px;
   margin-left: auto;
@@ -267,22 +283,30 @@
 .successButton {
   display: inline-flex;
   padding: 14px 28px;
-  font-family: inherit;
+  font-family: 'Inter', sans-serif;
   font-size: 15px;
   font-weight: 600;
-  color: var(--finam-accent);
+  color: #FFF;
   background: transparent;
-  border: 2px solid var(--finam-accent);
+  border: 1px solid #A55AFF;
   border-radius: 12px;
   cursor: pointer;
   transition: all var(--transition-base);
 }
 
 .successButton:hover {
-  background: rgba(255, 215, 0, 0.1);
+  background: rgba(255, 255, 255, 0.1);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  .form {
+    padding: 60px 24px 80px;
+  }
+  
+  .title {
+    font-size: 28px;
+  }
+  
   .formCard {
     padding: 28px 20px;
   }
