@@ -190,7 +190,7 @@ export function ExpertForm() {
               <input
                 type="url"
                 className={styles.input}
-                placeholder="GitHub, LinkedIn, SourceForge..."
+                placeholder="GitHub, LinkedIn, Habr..."
                 value={formData.profileLink}
                 onChange={(e) => setFormData(prev => ({ ...prev, profileLink: e.target.value }))}
                 onFocus={() => setFocusedField('profileLink')}
