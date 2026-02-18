@@ -32,8 +32,8 @@ const cards = [
     title: 'Готовность включиться',
     description: 'Если у тебя есть что-то важное — расскажи. Мы поможем двигаться всерьёз.',
     icon: (
-      <span style={{ display: 'block', marginTop: 28, position: 'relative', left: '-10px' }}>
-        <img src="/icon/icon-1.png" alt="" width={72} height={72} className={styles.cardIconImgThird} />
+      <span style={{ display: 'block', position: 'relative', left: '-14px', top: '6px' }}>
+        <img src="/icon/telegram-action.png" alt="" width={115} height={115} className={styles.cardIconImgSm} />
       </span>
     ),
   },
