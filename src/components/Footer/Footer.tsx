@@ -11,17 +11,7 @@ export function Footer() {
           <div className={styles.contactGlow} />
           <div className={styles.contactContent}>
             <div className={styles.contactIconWrapper}>
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <linearGradient id="contact-icon-grad" x1="8" y1="8" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#FEDA3B"/>
-                    <stop offset="0.5" stopColor="#EF5541"/>
-                    <stop offset="1" stopColor="#801FDB"/>
-                  </linearGradient>
-                </defs>
-                <path d="M8 14C8 11.79 9.79 10 12 10H36C38.21 10 40 11.79 40 14V34C40 36.21 38.21 38 36 38H12C9.79 38 8 36.21 8 34V14Z" stroke="url(#contact-icon-grad)" strokeWidth="2.5" fill="none"/>
-                <path d="M8 14L24 26L40 14" stroke="url(#contact-icon-grad)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+              <img src="/icon/maiil.png" alt="Email" width={64} height={64} />
             </div>
             <div className={styles.contactText}>
               <h3 className={styles.contactTitle}>Остались вопросы? Свяжись с нами!</h3>
