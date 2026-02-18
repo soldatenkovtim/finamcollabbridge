@@ -6,7 +6,7 @@ import styles from './Benefits.module.css'
 const benefits = [
   {
     title: 'Решишь то, что давно мешает работать',
-    description: 'Превращай раздражающие проблемы в решённые задачи. Участвуй в процессе улучшения компании и увидь результат своих усилий.',
+    description: 'Превращай раздражающие проблемы в решённые задачи. Участвуй в процессе улучшения компании и увидишь результат своих усилий.',
     icon: <img src="/icon/posmark.png" alt="" width={120} height={120} className={styles.cardIconImg} />,
   },
   {
@@ -43,17 +43,17 @@ export function Benefits() {
           {benefits.map((benefit, index) => (
             <motion.div
               key={benefit.title}
-              className={`${styles.card} ${index === 1 ? styles.cardContentLower : ''}`}
+              className={styles.card}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <div className={styles.cardIcon}>{benefit.icon}</div>
               <div className={styles.cardContent}>
                 <h3 className={styles.cardTitle}>{benefit.title}</h3>
               </div>
               <p className={styles.cardDescription}>{benefit.description}</p>
+              <div className={styles.cardIcon}>{benefit.icon}</div>
             </motion.div>
           ))}
         </div>

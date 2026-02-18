@@ -6,7 +6,7 @@ import Link from 'next/link'
 import styles from './Header.module.css'
 
 const navLinks = [
-  { href: '/#initiative-form', label: 'Предложить инициативу' },
+  { href: '/#hero', label: 'Предложить инициативу' },
   { href: '/expert', label: 'Предложить эксперта' },
   { href: '/faq', label: 'FAQ' },
 ]
@@ -116,7 +116,7 @@ export function Header() {
           
           <nav className={styles.nav}>
             {navLinks.map((link) => {
-              const isInitiativeLink = link.href.startsWith('/#initiative-form')
+              const isInitiativeLink = link.href.startsWith('/#hero')
               const isActive = isInitiativeLink ? pathname === '/' : pathname === link.href
               return (
                 <Link
@@ -125,7 +125,7 @@ export function Header() {
                   className={`${styles.navLink} ${isActive ? styles.active : ''}`}
                   onClick={isInitiativeLink && pathname === '/' ? (e) => {
                     e.preventDefault()
-                    document.getElementById('initiative-form')?.scrollIntoView({ behavior: 'smooth' })
+                    document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' })
                   } : undefined}
                 >
                   {link.label}
@@ -177,7 +177,7 @@ export function Header() {
         <div className={styles.mobileMenu}>
           <nav className={styles.mobileNav}>
             {navLinks.map((link) => {
-              const isInitiativeLink = link.href.startsWith('/#initiative-form')
+              const isInitiativeLink = link.href.startsWith('/#hero')
               const isActive = isInitiativeLink ? pathname === '/' : pathname === link.href
               return (
                 <Link
@@ -187,7 +187,7 @@ export function Header() {
                     setIsMenuOpen(false)
                     if (isInitiativeLink && pathname === '/') {
                       setTimeout(() => {
-                        document.getElementById('initiative-form')?.scrollIntoView({ behavior: 'smooth' })
+                        document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' })
                       }, 100)
                     }
                   }}

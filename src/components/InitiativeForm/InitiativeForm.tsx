@@ -63,7 +63,7 @@ export function InitiativeForm() {
       if (!el) return
       const rect = el.getBoundingClientRect()
       setDropdownRect({
-        top: rect.bottom + 4,
+        top: rect.bottom + 10,
         left: rect.left - 16,
         width: rect.width + 28
       })
@@ -134,7 +134,7 @@ export function InitiativeForm() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className={styles.title}>Анкета</h2>
+            <h2 className={styles.title}>Предложить инициативу</h2>
             <p className={styles.subtitle}>Заполни форму — это займёт пару минут</p>
           </motion.div>
           
@@ -153,7 +153,7 @@ export function InitiativeForm() {
               <input
                 type="text"
                 className={styles.input}
-                placeholder="ФИО (Например, кто? Данил Колбасенко Андреевич)"
+                placeholder="Например: Иванов Иван Иванович"
                 value={formData.fullName}
                 onChange={(e) => setFormData(prev => ({ ...prev, fullName: e.target.value }))}
                 onFocus={() => setFocusedField('fullName')}
@@ -252,19 +252,32 @@ export function InitiativeForm() {
                   <span className={styles.sliderLabelCenterRight}>Значимая</span>
                   <span className={styles.sliderLabelRight}>Высокая</span>
                 </div>
-                <input
-                  type="range"
-                  min="1"
-                  max="5"
-                  value={formData.priority}
-                  onChange={(e) => setFormData(prev => ({ ...prev, priority: parseInt(e.target.value) }))}
-                  className={styles.slider}
-                />
+                <div className={styles.sliderTrack}>
+                  <div
+                    className={styles.sliderFill}
+                    style={{ width: `${((formData.priority - 1) / 4) * 100}%` }}
+                  />
+                  <div
+                    className={styles.sliderThumb}
+                    style={{ left: `${((formData.priority - 1) / 4) * 100}%` }}
+                  />
+                  {[1, 2, 3, 4, 5].map((num) => (
+                    <button
+                      key={num}
+                      type="button"
+                      className={styles.sliderHitArea}
+                      style={{ left: `${((num - 1) / 4) * 100}%` }}
+                      onClick={() => setFormData(prev => ({ ...prev, priority: num }))}
+                    />
+                  ))}
+                </div>
                 <div className={styles.sliderDots}>
                   {[1, 2, 3, 4, 5].map((num) => (
                     <div
                       key={num}
                       className={`${styles.dot} ${formData.priority >= num ? styles.activeDot : ''}`}
+                      onClick={() => setFormData(prev => ({ ...prev, priority: num }))}
+                      style={{ cursor: 'pointer' }}
                     />
                   ))}
                 </div>

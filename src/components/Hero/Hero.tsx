@@ -5,7 +5,7 @@ import styles from './Hero.module.css'
 
 export function Hero() {
   return (
-    <section className={styles.hero}>
+    <section className={styles.hero} id="hero">
       {/* Фоновое изображение с градиентом */}
       <div className={styles.backgroundImage} />
       <div className={styles.backgroundOverlay} />
@@ -18,7 +18,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            У тебя есть рабочая проблема? Расскажи – мы поможем её решить
+            У тебя есть рабочая проблема? Расскажи — мы поможем её решить
           </motion.h1>
           
           <motion.div
