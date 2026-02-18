@@ -6,7 +6,7 @@ import Link from 'next/link'
 import styles from './Header.module.css'
 
 const navLinks = [
-  { href: '/', label: 'Предложить инициативу' },
+  { href: '/#initiative-form', label: 'Предложить инициативу' },
   { href: '/expert', label: 'Предложить эксперта' },
   { href: '/faq', label: 'FAQ' },
 ]
@@ -115,29 +115,48 @@ export function Header() {
           </Link>
           
           <nav className={styles.nav}>
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`${styles.navLink} ${pathname === link.href ? styles.active : ''}`}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isInitiativeLink = link.href.startsWith('/#initiative-form')
+              const isActive = isInitiativeLink ? pathname === '/' : pathname === link.href
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`${styles.navLink} ${isActive ? styles.active : ''}`}
+                  onClick={isInitiativeLink && pathname === '/' ? (e) => {
+                    e.preventDefault()
+                    document.getElementById('initiative-form')?.scrollIntoView({ behavior: 'smooth' })
+                  } : undefined}
+                >
+                  {link.label}
+                </Link>
+              )
+            })}
           </nav>
           
           <div className={styles.actions}>
-            <a 
-              href="https://collab.finam.ru/about-projects" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className={styles.projectsButton}
+            <span
+              className={styles.projectsButtonWrap}
+              style={{
+                background: 'linear-gradient(135deg, #A084E8 0%, #E040FB 35%, #EF5541 65%, #FFC06F 100%)',
+                padding: '2px',
+                borderRadius: '10px',
+                display: 'inline-flex',
+              }}
             >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z" fill="currentColor"/>
-              </svg>
-              <span>Смотреть проекты</span>
-            </a>
+              <a 
+                href="https://collab.finam.ru/about-projects" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={styles.projectsButton}
+                style={{ background: '#0D0512', borderRadius: '8px' }}
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z" fill="currentColor"/>
+                </svg>
+                <span>Смотреть проекты</span>
+              </a>
+            </span>
 
             <button
               className={styles.menuButton}
@@ -160,28 +179,50 @@ export function Header() {
       {isMenuOpen && (
         <div className={styles.mobileMenu}>
           <nav className={styles.mobileNav}>
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setIsMenuOpen(false)}
-                className={`${styles.mobileNavLink} ${pathname === link.href ? styles.active : ''}`}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <a 
-              href="https://collab.finam.ru/about-projects" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className={styles.mobileProjectsButton}
-              onClick={() => setIsMenuOpen(false)}
+            {navLinks.map((link) => {
+              const isInitiativeLink = link.href.startsWith('/#initiative-form')
+              const isActive = isInitiativeLink ? pathname === '/' : pathname === link.href
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => {
+                    setIsMenuOpen(false)
+                    if (isInitiativeLink && pathname === '/') {
+                      setTimeout(() => {
+                        document.getElementById('initiative-form')?.scrollIntoView({ behavior: 'smooth' })
+                      }, 100)
+                    }
+                  }}
+                  className={`${styles.mobileNavLink} ${isActive ? styles.active : ''}`}
+                >
+                  {link.label}
+                </Link>
+              )
+            })}
+            <span
+              className={styles.mobileProjectsButtonWrap}
+              style={{
+                background: 'linear-gradient(135deg, #A084E8 0%, #E040FB 35%, #EF5541 65%, #FFC06F 100%)',
+                padding: '2px',
+                borderRadius: '10px',
+                display: 'inline-flex',
+              }}
             >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z" fill="currentColor"/>
-              </svg>
-              <span>Смотреть проекты</span>
-            </a>
+              <a 
+                href="https://collab.finam.ru/about-projects" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={styles.mobileProjectsButton}
+                onClick={() => setIsMenuOpen(false)}
+                style={{ background: '#0D0512', borderRadius: '8px' }}
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z" fill="currentColor"/>
+                </svg>
+                <span>Смотреть проекты</span>
+              </a>
+            </span>
           </nav>
         </div>
       )}

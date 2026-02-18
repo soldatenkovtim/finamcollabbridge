@@ -46,7 +46,7 @@ export function InitiativeForm() {
   
   if (isSubmitted) {
     return (
-      <section className={styles.form} id="form">
+      <section className={styles.form} id="initiative-form">
         <div className={styles.backgroundGlow} />
         <div className={styles.container}>
           <motion.div
@@ -87,7 +87,7 @@ export function InitiativeForm() {
   }
   
   return (
-    <section className={styles.form} id="form">
+    <section className={styles.form} id="initiative-form">
       <div className={styles.backgroundGlow} />
       <div className={styles.container}>
         <div className={styles.layout}>
