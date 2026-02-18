@@ -99,12 +99,13 @@
 }
 
 .cardIcon {
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: auto;
+  overflow: visible;
 }
 
 .cardIcon svg {
@@ -117,15 +118,10 @@
   align-items: center;
   gap: 14px;
   padding: 18px 24px;
-  background: rgba(254, 218, 59, 0.06);
-  border: 1px solid rgba(254, 218, 59, 0.15);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   margin-top: 24px;
-}
-
-.noteIcon {
-  color: #FEDA3B;
-  flex-shrink: 0;
 }
 
 .note span {
@@ -138,6 +134,14 @@
 
 .note strong {
   color: #FFF;
+}
+
+.gradientText {
+  background: linear-gradient(305deg, #FEDA3B -2.67%, #EF5541 38.9%, #801FDB 77.17%, #7E2A89 98.46%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
 }
 
 @media (max-width: 1200px) {

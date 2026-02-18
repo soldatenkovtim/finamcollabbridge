@@ -112,7 +112,7 @@ export function ExpertForm() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className={styles.title}>Анкета</h2>
+            <h2 className={styles.title}>Предложить эксперта</h2>
             <p className={styles.subtitle}>Заполни форму — это займёт пару минут. Дальше мы с тобой свяжемся.</p>
           </motion.div>
           
@@ -249,7 +249,7 @@ export function ExpertForm() {
                       </svg>
                     </div>
                     <span className={styles.filePlaceholder}>
-                      <strong>Нажми для загрузки</strong> или перетащи файл
+                      Нажми для загрузки или перетащи файл
                     </span>
                     <span className={styles.fileHint}>PDF, DOC, DOCX до 10MB</span>
                   </label>

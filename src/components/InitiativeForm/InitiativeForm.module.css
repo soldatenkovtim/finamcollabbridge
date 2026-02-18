@@ -72,17 +72,18 @@
   flex-direction: column;
   width: 557px;
   background: rgba(192, 192, 204, 0.16);
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   border-radius: 8px;
-  padding: 8px 12px 8px 16px;
+  padding: 7px 11px 7px 15px;
   gap: 8px;
   transition: all 0.2s ease;
 }
 
 .inputWrapper.focused {
-  background: rgba(79, 79, 89, 0);
-  border-color: #FFE479;
-  box-shadow: 0 0 0 3px rgba(255, 186, 48, 0.16);
+  background-image: linear-gradient(#0D0512, #0D0512), linear-gradient(305deg, #FEDA3B -2.67%, #EF5541 38.9%, #801FDB 77.17%, #7E2A89 98.46%);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  box-shadow: 0 0 0 3px rgba(128, 31, 219, 0.16);
 }
 
 .inputWrapper.filled:not(.focused) {
@@ -101,7 +102,7 @@
 }
 
 .inputWrapper.focused .inputLabel {
-  color: #E08F05;
+  color: rgba(255, 255, 255, 0.72);
 }
 
 .input {
