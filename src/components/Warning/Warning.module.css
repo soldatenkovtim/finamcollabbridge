@@ -106,9 +106,61 @@
   margin-top: auto;
 }
 
-.cardIcon svg {
+.cardIcon svg,
+.cardIcon img {
   width: 60px;
   height: 60px;
+}
+
+.cardIconImg {
+  width: 117px;
+  height: 117px;
+  object-fit: contain;
+}
+
+/* Первая карточка (Реальная боль): иконка по одной линии с надписями, симметрия отступов */
+.card:first-child {
+  padding-bottom: 0;
+}
+
+.card:first-child .cardIcon {
+  width: 117px;
+  height: 117px;
+  margin-top: auto;
+  margin-bottom: 30px;
+  margin-left: -30px;
+  padding-top: 48px;      /* сдвиг иконки ниже */
+  align-self: flex-start;
+  justify-content: flex-start;
+}
+
+.card:first-child .cardIcon img {
+  width: 117px;
+  height: 117px;
+}
+
+/* Вторая карточка (Чёткая мотивация): иконка 85px (уменьшена на 10%) */
+.cardIconImgSm {
+  width: 85px;
+  height: 85px;
+  object-fit: contain;
+}
+
+.card:nth-child(2) {
+  padding-bottom: 0;
+}
+
+.card:nth-child(2) .cardIcon {
+  width: 85px;
+  height: 85px;
+  margin-top: auto;
+  margin-bottom: 30px;
+  padding-top: 24px;
+}
+
+.card:nth-child(2) .cardIcon img {
+  width: 85px;
+  height: 85px;
 }
 
 @media (max-width: 1200px) {

@@ -69,6 +69,14 @@
   flex-shrink: 0;
 }
 
+/* Обводка градиентом: обёртка с градиентом, внутри — кнопка с фоном */
+.projectsButtonWrap {
+  display: inline-flex;
+  padding: 2px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #A084E8 0%, #E040FB 35%, #EF5541 65%, #FFC06F 100%);
+}
+
 .projectsButton {
   display: flex;
   justify-content: center;
@@ -76,16 +84,17 @@
   gap: 4px;
   padding: 10px 12px;
   border-radius: 8px;
-  border: 1px solid rgba(211, 211, 222, 0.3);
-  background: transparent;
+  border: none;
+  background: #0D0512;
   color: rgba(255, 255, 255, 0.9);
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
   letter-spacing: -0.056px;
-  transition: all 0.2s ease;
+  transition: background 0.2s ease;
   white-space: nowrap;
+  text-decoration: none;
 }
 
 .projectsButton svg {
@@ -94,9 +103,8 @@
   flex-shrink: 0;
 }
 
-.projectsButton:hover {
+.projectsButtonWrap:hover .projectsButton {
   background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(211, 211, 222, 0.5);
 }
 
 .menuButton {
@@ -141,6 +149,14 @@
   color: #FFC759;
 }
 
+.mobileProjectsButtonWrap {
+  display: inline-flex;
+  padding: 2px;
+  border-radius: 10px;
+  margin-top: 8px;
+  background: linear-gradient(135deg, #A084E8 0%, #E040FB 35%, #EF5541 65%, #FFC06F 100%);
+}
+
 .mobileProjectsButton {
   display: flex;
   justify-content: center;
@@ -148,15 +164,15 @@
   gap: 8px;
   padding: 12px 16px;
   border-radius: 8px;
-  border: 1px solid rgba(211, 211, 222, 0.3);
-  background: transparent;
+  border: none;
+  background: #0D0512;
   color: rgba(255, 255, 255, 0.9);
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
-  margin-top: 8px;
-  transition: all 0.2s ease;
+  transition: background 0.2s ease;
+  text-decoration: none;
 }
 
 .mobileProjectsButton svg {
@@ -165,9 +181,8 @@
   flex-shrink: 0;
 }
 
-.mobileProjectsButton:hover {
+.mobileProjectsButtonWrap:hover .mobileProjectsButton {
   background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(211, 211, 222, 0.5);
 }
 
 @media (max-width: 900px) {
@@ -183,7 +198,7 @@
     display: none;
   }
 
-  .projectsButton {
+  .projectsButtonWrap {
     display: none;
   }
   
