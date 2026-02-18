@@ -75,6 +75,11 @@
   padding: 2px;
   border-radius: 10px;
   background: linear-gradient(135deg, #A084E8 0%, #E040FB 35%, #EF5541 65%, #FFC06F 100%);
+  transition: box-shadow 0.2s ease;
+}
+
+.projectsButtonWrap:hover {
+  box-shadow: 0 8px 24px rgba(224, 64, 251, 0.4);
 }
 
 .projectsButton {
@@ -155,6 +160,11 @@
   border-radius: 10px;
   margin-top: 8px;
   background: linear-gradient(135deg, #A084E8 0%, #E040FB 35%, #EF5541 65%, #FFC06F 100%);
+  transition: box-shadow 0.2s ease;
+}
+
+.mobileProjectsButtonWrap:hover {
+  box-shadow: 0 8px 24px rgba(224, 64, 251, 0.4);
 }
 
 .mobileProjectsButton {

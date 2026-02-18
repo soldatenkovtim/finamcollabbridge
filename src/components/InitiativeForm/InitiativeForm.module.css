@@ -105,6 +105,10 @@
   color: rgba(255, 255, 255, 0.72);
 }
 
+.inputWrapperFirst.focused .inputLabel {
+  color: #FFF;
+}
+
 .input {
   width: 100%;
   padding: 8px 0;
@@ -120,6 +124,72 @@
 
 .input::placeholder {
   color: #A4A4B2;
+}
+
+.inputWrapperFirst,
+.inputWrapperSecond,
+.inputWrapperThird {
+  gap: 4px;
+  min-height: 84px;
+  box-sizing: border-box;
+}
+
+.inputWrapperFirst .inputLabel {
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.128px;
+  color: #FFF;
+}
+
+.inputWrapperFirst .input::placeholder {
+  color: #6F6F7C;
+}
+
+
+.inputWrapperSecond .inputLabel {
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.128px;
+  color: #FFF;
+}
+
+.inputWrapperSecond .input::placeholder {
+  color: #6F6F7C;
+}
+
+.inputWrapperSecond.focused .inputLabel {
+  color: #FFF;
+}
+
+
+.inputWrapperThird .inputLabel {
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.128px;
+  color: #FFF;
+}
+
+.inputWrapperThird.focused .inputLabel {
+  color: #FFF;
+}
+
+.inputWrapperFourth {
+  gap: 4px;
+}
+
+.inputWrapperFourth .inputLabel {
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.128px;
+  color: #FFF;
+}
+
+.inputWrapperFourth .textarea::placeholder {
+  color: #6F6F7C;
+}
+
+.inputWrapperFourth.focused .inputLabel {
+  color: #FFF;
 }
 
 .textarea {
@@ -181,16 +251,15 @@
 }
 
 .selectDropdown {
-  position: absolute;
-  top: calc(100% + 4px);
-  left: -16px;
-  width: calc(100% + 28px);
-  background: #1A1A1F;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: fixed;
+  background: rgba(28, 28, 36, 0.12);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 8px;
   padding: 8px;
-  z-index: 10;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  z-index: 9999;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 .selectDropdown button {
@@ -256,17 +325,34 @@
   justify-content: space-between;
   font-family: 'Inter', sans-serif;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.7);
   margin-bottom: 10px;
+  padding: 0 6px;
+}
+
+.sliderLabelLeft {
+  transform: translateX(-6px);
+}
+
+.sliderLabelCenter {
+  transform: translateX(-10px);
+}
+
+.sliderLabelCenterRight {
+  transform: translateX(10px);
+}
+
+.sliderLabelRight {
+  transform: translateX(6px);
 }
 
 .slider {
   width: 100%;
-  height: 6px;
+  height: 20px;
   -webkit-appearance: none;
   appearance: none;
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 3px;
+  border-radius: 10px;
   outline: none;
   cursor: pointer;
 }
@@ -296,7 +382,7 @@
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
-  padding: 0 2px;
+  padding: 0 6px;
 }
 
 .dot {
@@ -333,8 +419,10 @@
 }
 
 .submitButton:hover:not(:disabled) {
-  opacity: 0.9;
-  transform: translateY(-1px);
+  opacity: 0.95;
+  transform: translateY(-2px);
+  box-shadow: 0 0 24px rgba(128, 31, 219, 0.5), 0 0 48px rgba(239, 85, 65, 0.35);
+  filter: brightness(1.08);
 }
 
 .submitButton:disabled {

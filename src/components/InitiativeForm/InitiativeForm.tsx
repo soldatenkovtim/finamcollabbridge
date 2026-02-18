@@ -1,10 +1,19 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import { motion } from 'framer-motion'
 import styles from './InitiativeForm.module.css'
 
 type SearchType = 'expert' | 'team' | 'unknown' | null
+
+const PRIORITY_LABELS: Record<number, string> = {
+  1: 'Низкая',
+  2: 'Ниже среднего',
+  3: 'Средняя',
+  4: 'Значимая',
+  5: 'Высокая'
+}
 
 interface FormData {
   fullName: string
@@ -26,6 +35,8 @@ export function InitiativeForm() {
   const [focusedField, setFocusedField] = useState<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const searchTypeTriggerRef = useRef<HTMLDivElement>(null)
+  const [dropdownRect, setDropdownRect] = useState<{ top: number; left: number; width: number } | null>(null)
   
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -41,7 +52,31 @@ export function InitiativeForm() {
   const handleSearchTypeSelect = (type: SearchType) => {
     setFormData(prev => ({ ...prev, searchType: type }))
   }
-  
+
+  useEffect(() => {
+    if (focusedField !== 'searchType' || !searchTypeTriggerRef.current) {
+      setDropdownRect(null)
+      return
+    }
+    const updateRect = () => {
+      const el = searchTypeTriggerRef.current
+      if (!el) return
+      const rect = el.getBoundingClientRect()
+      setDropdownRect({
+        top: rect.bottom + 4,
+        left: rect.left - 16,
+        width: rect.width + 28
+      })
+    }
+    updateRect()
+    window.addEventListener('scroll', updateRect, true)
+    window.addEventListener('resize', updateRect)
+    return () => {
+      window.removeEventListener('scroll', updateRect, true)
+      window.removeEventListener('resize', updateRect)
+    }
+  }, [focusedField])
+
   const isFormValid = formData.fullName && formData.department && formData.searchType && formData.problem
   
   if (isSubmitted) {
@@ -113,12 +148,12 @@ export function InitiativeForm() {
             transition={{ duration: 0.5, delay: 0.1 }}
           >
             {/* ФИО */}
-            <div className={`${styles.inputWrapper} ${focusedField === 'fullName' ? styles.focused : ''} ${formData.fullName ? styles.filled : ''}`}>
-              <label className={styles.inputLabel}>ФИО*</label>
+            <div className={`${styles.inputWrapper} ${styles.inputWrapperFirst} ${focusedField === 'fullName' ? styles.focused : ''} ${formData.fullName ? styles.filled : ''}`}>
+              <label className={styles.inputLabel}>Как тебя зовут?</label>
               <input
                 type="text"
                 className={styles.input}
-                placeholder="Как тебя зовут?"
+                placeholder="ФИО (Например, кто? Данил Колбасенко Андреевич)"
                 value={formData.fullName}
                 onChange={(e) => setFormData(prev => ({ ...prev, fullName: e.target.value }))}
                 onFocus={() => setFocusedField('fullName')}
@@ -128,12 +163,12 @@ export function InitiativeForm() {
             </div>
             
             {/* Подразделение */}
-            <div className={`${styles.inputWrapper} ${focusedField === 'department' ? styles.focused : ''} ${formData.department ? styles.filled : ''}`}>
-              <label className={styles.inputLabel}>Подразделение*</label>
+            <div className={`${styles.inputWrapper} ${styles.inputWrapperSecond} ${focusedField === 'department' ? styles.focused : ''} ${formData.department ? styles.filled : ''}`}>
+              <label className={styles.inputLabel}>Где ты работаешь?</label>
               <input
                 type="text"
                 className={styles.input}
-                placeholder="Где ты работаешь?"
+                placeholder="Подразделение"
                 value={formData.department}
                 onChange={(e) => setFormData(prev => ({ ...prev, department: e.target.value }))}
                 onFocus={() => setFocusedField('department')}
@@ -143,9 +178,9 @@ export function InitiativeForm() {
             </div>
             
             {/* Кого ищешь - Dropdown style */}
-            <div className={`${styles.inputWrapper} ${focusedField === 'searchType' ? styles.focused : ''} ${formData.searchType ? styles.filled : ''}`}>
-              <label className={styles.inputLabel}>Кого ищешь?*</label>
-              <div className={styles.searchTypeSelect}>
+            <div className={`${styles.inputWrapper} ${styles.inputWrapperThird} ${focusedField === 'searchType' ? styles.focused : ''} ${formData.searchType ? styles.filled : ''}`}>
+              <label className={styles.inputLabel}>Кого ищешь?</label>
+              <div className={styles.searchTypeSelect} ref={searchTypeTriggerRef}>
                 <div 
                   className={styles.selectDisplay}
                   onClick={() => setFocusedField(focusedField === 'searchType' ? null : 'searchType')}
@@ -160,28 +195,40 @@ export function InitiativeForm() {
                     <path d="M6 9L12 15L18 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </div>
-                {focusedField === 'searchType' && (
-                  <div className={styles.selectDropdown}>
+                {focusedField === 'searchType' && dropdownRect && typeof document !== 'undefined' && createPortal(
+                  <div
+                    className={styles.selectDropdown}
+                    style={{
+                      position: 'fixed',
+                      top: dropdownRect.top,
+                      left: dropdownRect.left,
+                      width: dropdownRect.width,
+                      background: 'rgba(28, 28, 36, 0.12)',
+                      backdropFilter: 'blur(18px)',
+                      WebkitBackdropFilter: 'blur(18px)'
+                    }}
+                  >
                     <button type="button" onClick={() => { handleSearchTypeSelect('expert'); setFocusedField(null); }}>
-                      <span className={styles.optionIcon}>👤</span> Эксперт
+                      Эксперт
                     </button>
                     <button type="button" onClick={() => { handleSearchTypeSelect('team'); setFocusedField(null); }}>
-                      <span className={styles.optionIcon}>👥</span> Команда
+                      Команда
                     </button>
                     <button type="button" onClick={() => { handleSearchTypeSelect('unknown'); setFocusedField(null); }}>
-                      <span className={styles.optionIcon}>🤔</span> Пока не знаю
+                      Пока не знаю
                     </button>
-                  </div>
+                  </div>,
+                  document.body
                 )}
               </div>
             </div>
             
             {/* Суть проблемы */}
-            <div className={`${styles.inputWrapper} ${focusedField === 'problem' ? styles.focused : ''} ${formData.problem ? styles.filled : ''}`}>
-              <label className={styles.inputLabel}>Суть проблемы / идея*</label>
+            <div className={`${styles.inputWrapper} ${styles.inputWrapperFourth} ${focusedField === 'problem' ? styles.focused : ''} ${formData.problem ? styles.filled : ''}`}>
+              <label className={styles.inputLabel}>Опиши, что хочешь решить или улучшить</label>
               <textarea
                 className={styles.textarea}
-                placeholder="Опиши, что хочешь решить или улучшить"
+                placeholder="Суть проблемы / идея"
                 rows={3}
                 value={formData.problem}
                 onChange={(e) => setFormData(prev => ({ ...prev, problem: e.target.value }))}
@@ -195,12 +242,15 @@ export function InitiativeForm() {
             <div className={styles.prioritySection}>
               <div className={styles.priorityHeader}>
                 <label className={styles.priorityLabel}>Приоритетность</label>
-                <span className={styles.priorityValue}>{formData.priority} из 5</span>
+                <span className={styles.priorityValue}>Выбрана: {PRIORITY_LABELS[formData.priority]}</span>
               </div>
               <div className={styles.sliderWrapper}>
                 <div className={styles.sliderLabels}>
-                  <span>Низкий</span>
-                  <span>Высокий</span>
+                  <span className={styles.sliderLabelLeft}>Низкая</span>
+                  <span className={styles.sliderLabelCenter}>Ниже среднего</span>
+                  <span className={styles.sliderLabelCenter}>Средняя</span>
+                  <span className={styles.sliderLabelCenterRight}>Значимая</span>
+                  <span className={styles.sliderLabelRight}>Высокая</span>
                 </div>
                 <input
                   type="range"

@@ -15,26 +15,26 @@ const cards = [
     title: 'Чёткая мотивация',
     description: 'Если не понимаешь, чего именно хочешь — лучше пока не спеши с заявкой.',
     icon: (
-      <img src="/icon/targ.png" alt="" width={85} height={85} className={styles.cardIconImgSm} />
+      <span
+        data-motivation-icon
+        style={{
+          display: 'block',
+          position: 'relative',
+          left: '-18px',
+          top: '6px',
+        }}
+      >
+        <img src="/icon/targ.png" alt="" width={85} height={85} className={styles.cardIconImgSm} />
+      </span>
     ),
   },
   {
     title: 'Готовность включиться',
     description: 'Если у тебя есть что-то важное — расскажи. Мы поможем двигаться всерьёз.',
     icon: (
-      <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="warning-grad-3" x1="0" y1="0" x2="60" y2="60" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#FEDA3B"/>
-            <stop offset="0.4" stopColor="#EF5541"/>
-            <stop offset="0.8" stopColor="#801FDB"/>
-            <stop offset="1" stopColor="#7E2A89"/>
-          </linearGradient>
-        </defs>
-        <path d="M18 42L30 18L42 42" stroke="url(#warning-grad-3)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-        <path d="M22 36H38" stroke="url(#warning-grad-3)" strokeWidth="2.5" strokeLinecap="round"/>
-        <circle cx="30" cy="30" r="3" fill="url(#warning-grad-3)"/>
-      </svg>
+      <span style={{ display: 'block', marginTop: 28, position: 'relative', left: '-10px' }}>
+        <img src="/icon/icon-1.png" alt="" width={72} height={72} className={styles.cardIconImgThird} />
+      </span>
     ),
   },
 ]
@@ -73,7 +73,10 @@ export function Warning() {
                 <h3 className={styles.cardTitle}>{card.title}</h3>
                 <p className={styles.cardDescription}>{card.description}</p>
               </div>
-              <div className={styles.cardIcon}>
+              <div
+                className={styles.cardIcon}
+                data-icon={index === 1 ? 'motivation' : undefined}
+              >
                 {card.icon}
               </div>
             </motion.div>
