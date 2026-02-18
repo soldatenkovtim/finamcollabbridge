@@ -257,7 +257,7 @@
   -webkit-backdrop-filter: blur(18px);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 8px;
-  padding: 8px;
+  padding: 8px 8px 20px 8px;
   z-index: 9999;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
@@ -346,36 +346,49 @@
   transform: translateX(6px);
 }
 
-.slider {
+.sliderTrack {
+  position: relative;
   width: 100%;
   height: 20px;
-  -webkit-appearance: none;
-  appearance: none;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
-  outline: none;
   cursor: pointer;
 }
 
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
+.sliderFill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.sliderThumb {
+  position: absolute;
+  top: 50%;
   width: 20px;
   height: 20px;
   background: linear-gradient(305deg, #FEDA3B -2.67%, #EF5541 38.9%, #801FDB 77.17%, #7E2A89 98.46%);
   border-radius: 50%;
-  cursor: pointer;
   box-shadow: 0 2px 8px rgba(139, 92, 246, 0.4);
+  transform: translate(-50%, -50%);
+  transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
 }
 
-.slider::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
-  background: linear-gradient(305deg, #FEDA3B -2.67%, #EF5541 38.9%, #801FDB 77.17%, #7E2A89 98.46%);
-  border-radius: 50%;
-  cursor: pointer;
+.sliderHitArea {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 25%;
+  height: 40px;
+  background: transparent;
   border: none;
-  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.4);
+  cursor: pointer;
+  padding: 0;
 }
 
 .sliderDots {
@@ -390,7 +403,7 @@
   height: 8px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.2);
-  transition: all 0.2s ease;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .activeDot {

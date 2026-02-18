@@ -27,7 +27,7 @@ const criteria = [
   },
   {
     title: 'Операционная эффективность',
-    description: 'Инициативы, направленные на повышение операционной эффективности и понятный экономический эффект',
+    description: 'Инициативы, направленные на повышение операционной эффективности с понятным экономическим эффектом',
     icon: (
       <img src="/icon/analy.png" alt="" width={88} height={88} className={`${styles.criteriaIconImg} ${styles.criteriaIconImgLg} ${styles.criteriaIconImgXl}`} />
     ),

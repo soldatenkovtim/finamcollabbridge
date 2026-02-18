@@ -58,11 +58,11 @@
 .card {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 14px;
   padding: 30px;
   background-color: #141414;
   border-radius: 8px;
-  min-height: 411px;
+  min-height: 220px;
   transition: all 0.3s ease;
 }
 
@@ -78,6 +78,7 @@
   align-items: center;
   justify-content: center;
   overflow: visible;
+  margin-top: auto;
 }
 
 .cardIcon svg {
@@ -113,10 +114,6 @@
 .cardContent {
   display: flex;
   flex-direction: column;
-}
-
-.cardContentLower .cardDescription {
-  margin-top: 24px;
 }
 
 .cardTitle {
