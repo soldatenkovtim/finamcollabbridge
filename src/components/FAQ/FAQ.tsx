@@ -107,22 +107,6 @@ function FAQItem({ item, isOpen, onToggle }: {
             <div className={styles.answer}>
               <p>
                 {item.answer}
-                {item.hasLink && !item.isEmail && (
-                  <>
-                    {' '}
-                    <a 
-                      href={item.linkUrl} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className={styles.inlineLink}
-                    >
-                      {item.linkText}
-                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                        <path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </a>
-                  </>
-                )}
                 {item.isEmail && (
                   <>
                     {' '}
@@ -173,11 +157,6 @@ export function FAQ() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <div className={styles.badge}>
-            <span className={styles.badgeIcon}>❓</span>
-            <span>Часто задаваемые вопросы</span>
-          </div>
-          
           <h1 className={styles.title}>FAQ</h1>
           <p className={styles.subtitle}>
             Ответы на популярные вопросы о Финам Collab
