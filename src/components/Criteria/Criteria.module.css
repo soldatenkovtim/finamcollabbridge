@@ -77,11 +77,29 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: visible;
 }
 
-.cardIcon svg {
+.cardIcon svg,
+.cardIcon img.criteriaIconImg {
   width: 60px;
   height: 60px;
+  object-fit: contain;
+}
+
+.cardIcon img.criteriaIconImgMd {
+  width: 68px;
+  height: 68px;
+}
+
+.cardIcon img.criteriaIconImgLg {
+  width: 80px;
+  height: 80px;
+}
+
+.cardIcon img.criteriaIconImgXl {
+  width: 88px;
+  height: 88px;
 }
 
 .cardContent {
