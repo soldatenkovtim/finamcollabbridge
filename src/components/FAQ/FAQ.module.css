@@ -202,6 +202,74 @@
   box-shadow: 0 8px 24px rgba(139, 92, 246, 0.3);
 }
 
+/* Projects Grid */
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.projectCard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  width: 100%;
+}
+
+.projectCard:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(168, 85, 247, 0.3);
+  transform: translateY(-2px);
+}
+
+.projectIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  font-size: 18px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.projectIcon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.projectTitle {
+  flex: 1;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.3;
+}
+
+.projectArrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.4);
+  transition: all 0.2s ease;
+}
+
+.projectCard:hover .projectArrow {
+  color: #A78BFA;
+  transform: translateX(2px);
+}
+
 /* Contact Section */
 .contact {
   text-align: center;
@@ -279,5 +347,23 @@
   
   .contact {
     padding: 36px 24px;
+  }
+
+  .projectsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .projectCard {
+    padding: 12px 14px;
+  }
+
+  .projectIcon {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+
+  .projectTitle {
+    font-size: 13px;
   }
 }
