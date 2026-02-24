@@ -1,7 +1,10 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import styles from './Rewards.module.css'
+
+const REFERRAL_LINK = 'https://portal.finam.ru/deps/hr/Pages/vacancies.aspx'
 
 const rewards = [
   {
@@ -11,7 +14,7 @@ const rewards = [
   },
   {
     title: 'Ты привёл специалиста в штат',
-    description: 'Специалист уровня мидл и выше, которого мы наняли в штат',
+    descriptionWithLink: true,
     amount: '30 000 ₽',
   },
   {
@@ -52,7 +55,23 @@ export function Rewards() {
             >
               <div className={styles.cardContent}>
                 <h3 className={styles.cardTitle}>{reward.title}</h3>
-                <p className={styles.cardDescription}>{reward.description}</p>
+                <p className={styles.cardDescription}>
+                  {reward.descriptionWithLink ? (
+                    <>
+                      Специалист уровня мидл и выше, которого мы наняли в штат. Выплата по акции «Приведи друга»,{' '}
+                      <Link
+                        href={REFERRAL_LINK}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.cardDescriptionLink}
+                      >
+                        подробности тут
+                      </Link>
+                    </>
+                  ) : (
+                    reward.description
+                  )}
+                </p>
               </div>
               <div className={styles.cardAmount}>
                 {reward.amount}

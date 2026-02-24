@@ -121,6 +121,105 @@
   margin: 0;
 }
 
+/* Пример для анкеты (формат полей инициативы) */
+.formExampleSection {
+  padding: 20px 24px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.formExampleTitle {
+  font-family: 'Inter Tight', var(--font-inter-tight), sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 16px 0;
+}
+
+.formExampleFields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.formExampleField {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(192, 192, 204, 0.16);
+  border-radius: 8px;
+  padding: 7px 11px 7px 15px;
+}
+
+.formExampleLabel {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #6F6F7C;
+}
+
+.formExampleValue {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  color: #fff;
+}
+
+.formExampleProblem {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.formExamplePriorityRow {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.formExamplePriorityValue {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.formExampleDots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.formExampleDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: background 0.2s ease;
+}
+
+.formExampleDotActive {
+  background: linear-gradient(305deg, #FEDA3B -2.67%, #EF5541 38.9%, #801FDB 77.17%, #7E2A89 98.46%);
+}
+
+.formExampleCta {
+  display: inline-block;
+  margin-top: 16px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #a78bfa;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.formExampleCta:hover {
+  color: #c4b5fd;
+}
+
 /* Cards Container */
 .cardsContainer {
   display: flex;
@@ -187,6 +286,19 @@
 @media (max-width: 640px) {
   .backdrop {
     padding: 16px;
+  }
+
+  .formExampleSection {
+    padding: 16px 20px 20px;
+  }
+
+  .formExampleTitle {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+
+  .formExampleProblem {
+    font-size: 13px;
   }
 
   .heroSection {
