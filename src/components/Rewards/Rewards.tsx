@@ -5,15 +5,19 @@ import styles from './Rewards.module.css'
 
 const rewards = [
   {
-    title: 'Ты привёл специалиста',
+    title: 'Ты привёл специалиста на проект',
     description: 'Специалист уровня мидл и выше, которого мы разово привлекли к проекту Финам Collab',
     amount: '10 000 ₽',
+  },
+  {
+    title: 'Ты привёл специалиста в штат',
+    description: 'Специалист уровня мидл и выше, которого мы наняли в штат',
+    amount: '30 000 ₽',
   },
   {
     title: 'Ты привёл человека с проектом',
     description: 'который мы решили совместно реализовать в рамках Финам Collab',
     amount: '50 000 ₽',
-    premium: true,
   },
 ]
 
@@ -40,7 +44,7 @@ export function Rewards() {
           {rewards.map((reward, index) => (
             <motion.div
               key={reward.title}
-              className={`${styles.card} ${reward.premium ? styles.premium : ''}`}
+              className={styles.card}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
@@ -50,7 +54,7 @@ export function Rewards() {
                 <h3 className={styles.cardTitle}>{reward.title}</h3>
                 <p className={styles.cardDescription}>{reward.description}</p>
               </div>
-              <div className={`${styles.cardAmount} ${reward.premium ? styles.premiumAmount : ''}`}>
+              <div className={styles.cardAmount}>
                 {reward.amount}
               </div>
             </motion.div>

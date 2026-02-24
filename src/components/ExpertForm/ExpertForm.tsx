@@ -1,11 +1,21 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import { motion } from 'framer-motion'
 import styles from './ExpertForm.module.css'
 
+const ATTRACTION_OPTIONS = [
+  'Специалист на проект',
+  'Специалист в штат',
+  'Специалист со своим проектом',
+] as const
+
+type AttractionType = (typeof ATTRACTION_OPTIONS)[number] | ''
+
 interface FormData {
   candidateName: string
+  attractionType: AttractionType
   position: string
   whyRecommend: string
   howUseful: string
@@ -17,6 +27,7 @@ interface FormData {
 export function ExpertForm() {
   const [formData, setFormData] = useState<FormData>({
     candidateName: '',
+    attractionType: '',
     position: '',
     whyRecommend: '',
     howUseful: '',
@@ -29,6 +40,32 @@ export function ExpertForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
+  const attractionTriggerRef = useRef<HTMLDivElement>(null)
+  const [dropdownRect, setDropdownRect] = useState<{ top: number; left: number; width: number } | null>(null)
+
+  useEffect(() => {
+    if (focusedField !== 'attractionType' || !attractionTriggerRef.current) {
+      setDropdownRect(null)
+      return
+    }
+    const updateRect = () => {
+      const el = attractionTriggerRef.current
+      if (!el) return
+      const rect = el.getBoundingClientRect()
+      setDropdownRect({
+        top: rect.bottom + 10,
+        left: rect.left - 16,
+        width: rect.width + 28
+      })
+    }
+    updateRect()
+    window.addEventListener('scroll', updateRect, true)
+    window.addEventListener('resize', updateRect)
+    return () => {
+      window.removeEventListener('scroll', updateRect, true)
+      window.removeEventListener('resize', updateRect)
+    }
+  }, [focusedField])
   
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -53,7 +90,7 @@ export function ExpertForm() {
     }
   }
   
-  const isFormValid = formData.candidateName && formData.position && formData.whyRecommend && formData.contact
+  const isFormValid = formData.candidateName && formData.attractionType && formData.position && formData.whyRecommend && formData.contact
   
   if (isSubmitted) {
     return (
@@ -82,6 +119,7 @@ export function ExpertForm() {
                 setIsSubmitted(false)
                 setFormData({
                   candidateName: '',
+                  attractionType: '',
                   position: '',
                   whyRecommend: '',
                   howUseful: '',
@@ -127,11 +165,11 @@ export function ExpertForm() {
           >
             {/* Имя кандидата */}
             <div className={`${styles.inputWrapper} ${focusedField === 'candidateName' ? styles.focused : ''} ${formData.candidateName ? styles.filled : ''}`}>
-              <label className={styles.inputLabel}>Имя кандидата*</label>
+              <label className={styles.inputLabel}>ФИО специалиста</label>
               <input
                 type="text"
                 className={styles.input}
-                placeholder="ФИО специалиста"
+                placeholder="ФИО, кого рекомендуете"
                 value={formData.candidateName}
                 onChange={(e) => setFormData(prev => ({ ...prev, candidateName: e.target.value }))}
                 onFocus={() => setFocusedField('candidateName')}
@@ -140,13 +178,59 @@ export function ExpertForm() {
               />
             </div>
             
+            {/* Как мы его можем привлечь — dropdown как в анкете инициативы */}
+            <div className={`${styles.inputWrapper} ${focusedField === 'attractionType' ? styles.focused : ''} ${formData.attractionType ? styles.filled : ''}`}>
+              <label className={styles.inputLabel}>Как мы его можем привлечь</label>
+              <div className={styles.attractionSelect} ref={attractionTriggerRef}>
+                <div
+                  className={styles.selectDisplay}
+                  onClick={() => setFocusedField(focusedField === 'attractionType' ? null : 'attractionType')}
+                >
+                  <span className={formData.attractionType ? styles.selectedValue : styles.placeholder}>
+                    {formData.attractionType || ' '}
+                  </span>
+                  <svg className={styles.selectArrow} width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M6 9L12 15L18 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                {focusedField === 'attractionType' && dropdownRect && typeof document !== 'undefined' && createPortal(
+                  <div
+                    className={styles.selectDropdown}
+                    style={{
+                      position: 'fixed',
+                      top: dropdownRect.top,
+                      left: dropdownRect.left,
+                      width: dropdownRect.width,
+                      background: 'rgba(28, 28, 36, 0.12)',
+                      backdropFilter: 'blur(18px)',
+                      WebkitBackdropFilter: 'blur(18px)'
+                    }}
+                  >
+                    {ATTRACTION_OPTIONS.map((opt) => (
+                      <button
+                        key={opt}
+                        type="button"
+                        onClick={() => {
+                          setFormData(prev => ({ ...prev, attractionType: opt }))
+                          setFocusedField(null)
+                        }}
+                      >
+                        {opt}
+                      </button>
+                    ))}
+                  </div>,
+                  document.body
+                )}
+              </div>
+            </div>
+            
             {/* Кем работает */}
             <div className={`${styles.inputWrapper} ${focusedField === 'position' ? styles.focused : ''} ${formData.position ? styles.filled : ''}`}>
-              <label className={styles.inputLabel}>Кем работает*</label>
+              <label className={styles.inputLabel}>Должность или роль</label>
               <input
                 type="text"
                 className={styles.input}
-                placeholder="Должность или роль"
+                placeholder="Кем работает или чем занимается?"
                 value={formData.position}
                 onChange={(e) => setFormData(prev => ({ ...prev, position: e.target.value }))}
                 onFocus={() => setFocusedField('position')}
@@ -157,10 +241,10 @@ export function ExpertForm() {
             
             {/* Почему рекомендуешь */}
             <div className={`${styles.inputWrapper} ${focusedField === 'whyRecommend' ? styles.focused : ''} ${formData.whyRecommend ? styles.filled : ''}`}>
-              <label className={styles.inputLabel}>Почему рекомендуешь?*</label>
+              <label className={styles.inputLabel}>Пара слов о причине рекомендации</label>
               <textarea
                 className={styles.textarea}
-                placeholder="Пара слов о причине рекомендации"
+                placeholder="Почему рекомендуешь?"
                 rows={3}
                 value={formData.whyRecommend}
                 onChange={(e) => setFormData(prev => ({ ...prev, whyRecommend: e.target.value }))}
@@ -172,10 +256,10 @@ export function ExpertForm() {
             
             {/* Чем может быть полезен */}
             <div className={`${styles.inputWrapper} ${focusedField === 'howUseful' ? styles.focused : ''} ${formData.howUseful ? styles.filled : ''}`}>
-              <label className={styles.inputLabel}>Чем может быть полезен?</label>
+              <label className={styles.inputLabel}>Области экспертизы, навыки</label>
               <textarea
                 className={styles.textarea}
-                placeholder="Области экспертизы, навыки"
+                placeholder="Чем может быть полезен?"
                 rows={3}
                 value={formData.howUseful}
                 onChange={(e) => setFormData(prev => ({ ...prev, howUseful: e.target.value }))}
@@ -186,11 +270,11 @@ export function ExpertForm() {
             
             {/* Ссылка на профиль */}
             <div className={`${styles.inputWrapper} ${focusedField === 'profileLink' ? styles.focused : ''} ${formData.profileLink ? styles.filled : ''}`}>
-              <label className={styles.inputLabel}>Ссылка на профиль</label>
+              <label className={styles.inputLabel}>Ссылка на профиль эксперта</label>
               <input
                 type="url"
                 className={styles.input}
-                placeholder="GitHub, LinkedIn, Habr..."
+                placeholder="GitHub, LinkedIn, Habr или другие"
                 value={formData.profileLink}
                 onChange={(e) => setFormData(prev => ({ ...prev, profileLink: e.target.value }))}
                 onFocus={() => setFocusedField('profileLink')}
@@ -200,7 +284,7 @@ export function ExpertForm() {
             
             {/* Контакт */}
             <div className={`${styles.inputWrapper} ${focusedField === 'contact' ? styles.focused : ''} ${formData.contact ? styles.filled : ''}`}>
-              <label className={styles.inputLabel}>Контакт эксперта*</label>
+              <label className={styles.inputLabel}>Контакт эксперта</label>
               <input
                 type="text"
                 className={styles.input}
