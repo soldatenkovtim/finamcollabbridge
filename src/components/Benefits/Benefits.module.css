@@ -114,6 +114,7 @@
 .cardContent {
   display: flex;
   flex-direction: column;
+  min-height: 48px; /* две строки заголовка — выравнивает начало описания во всех карточках */
 }
 
 .cardTitle {

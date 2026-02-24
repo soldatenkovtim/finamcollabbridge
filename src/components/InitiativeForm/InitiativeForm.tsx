@@ -34,9 +34,42 @@ export function InitiativeForm() {
   
   const [focusedField, setFocusedField] = useState<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSliderDragging, setIsSliderDragging] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const searchTypeTriggerRef = useRef<HTMLDivElement>(null)
+  const sliderTrackRef = useRef<HTMLDivElement>(null)
   const [dropdownRect, setDropdownRect] = useState<{ top: number; left: number; width: number } | null>(null)
+
+  const SLIDER_THUMB_HALF = 10
+
+  const updatePriorityFromClientX = (clientX: number) => {
+    const track = sliderTrackRef.current
+    if (!track) return
+    const rect = track.getBoundingClientRect()
+    const leftBound = rect.left + SLIDER_THUMB_HALF
+    const rightBound = rect.right - SLIDER_THUMB_HALF
+    const trackWidth = rightBound - leftBound
+    const ratio = Math.max(0, Math.min(1, (clientX - leftBound) / trackWidth))
+    const priority = Math.min(5, Math.max(1, Math.round(ratio * 4) + 1))
+    setFormData(prev => ({ ...prev, priority }))
+  }
+
+  const sliderInsetRatio = (formData.priority - 1) / 4
+  const sliderThumbLeft = `calc(10px + (100% - 20px) * ${sliderInsetRatio})`
+
+  const handleSliderMouseDown = (e: React.MouseEvent) => {
+    e.preventDefault()
+    setIsSliderDragging(true)
+    updatePriorityFromClientX(e.clientX)
+    const onMove = (e: MouseEvent) => updatePriorityFromClientX(e.clientX)
+    const onUp = () => {
+      setIsSliderDragging(false)
+      document.removeEventListener('mousemove', onMove)
+      document.removeEventListener('mouseup', onUp)
+    }
+    document.addEventListener('mousemove', onMove)
+    document.addEventListener('mouseup', onUp)
+  }
   
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -252,14 +285,18 @@ export function InitiativeForm() {
                   <span className={styles.sliderLabelCenterRight}>Значимая</span>
                   <span className={styles.sliderLabelRight}>Высокая</span>
                 </div>
-                <div className={styles.sliderTrack}>
+                <div
+                  ref={sliderTrackRef}
+                  className={styles.sliderTrack}
+                  onMouseDown={handleSliderMouseDown}
+                >
                   <div
                     className={styles.sliderFill}
-                    style={{ width: `${((formData.priority - 1) / 4) * 100}%` }}
+                    style={{ width: sliderThumbLeft }}
                   />
                   <div
-                    className={styles.sliderThumb}
-                    style={{ left: `${((formData.priority - 1) / 4) * 100}%` }}
+                    className={`${styles.sliderThumb} ${isSliderDragging ? styles.sliderThumbDragging : ''}`}
+                    style={{ left: sliderThumbLeft }}
                   />
                   {[1, 2, 3, 4, 5].map((num) => (
                     <button
