@@ -19,5 +19,8 @@ sleep 1
 echo "→ rm -rf .next"
 rm -rf .next
 
+# Повышаем лимит открытых файлов, чтобы dev-сервер не падал с EMFILE и не отдавал 404 на /
+ulimit -n 10240 2>/dev/null || true
+
 echo "→ npm run dev -- --turbo"
 npm run dev -- --turbo
