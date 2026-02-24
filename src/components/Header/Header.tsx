@@ -135,26 +135,6 @@ export function Header() {
           </nav>
           
           <div className={styles.actions}>
-            <span
-              className={styles.projectsButtonWrap}
-              style={{
-                background: 'linear-gradient(135deg, #A084E8 0%, #E040FB 35%, #EF5541 65%, #FFC06F 100%)',
-                padding: '2px',
-                borderRadius: '10px',
-                display: 'inline-flex',
-              }}
-            >
-              <a 
-                href="https://collab.finam.ru/about-projects" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className={styles.projectsButton}
-                style={{ background: '#0D0512', borderRadius: '8px' }}
-              >
-                <span>Смотреть проекты</span>
-              </a>
-            </span>
-
             <button
               className={styles.menuButton}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -197,26 +177,6 @@ export function Header() {
                 </Link>
               )
             })}
-            <span
-              className={styles.mobileProjectsButtonWrap}
-              style={{
-                background: 'linear-gradient(135deg, #A084E8 0%, #E040FB 35%, #EF5541 65%, #FFC06F 100%)',
-                padding: '2px',
-                borderRadius: '10px',
-                display: 'inline-flex',
-              }}
-            >
-              <a 
-                href="https://collab.finam.ru/about-projects" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className={styles.mobileProjectsButton}
-                onClick={() => setIsMenuOpen(false)}
-                style={{ background: '#0D0512', borderRadius: '8px' }}
-              >
-                <span>Смотреть проекты</span>
-              </a>
-            </span>
           </nav>
         </div>
       )}

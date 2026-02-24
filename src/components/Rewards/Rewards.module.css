@@ -53,7 +53,7 @@
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   margin-bottom: 24px;
 }
@@ -97,6 +97,7 @@
   line-height: 28px;
   letter-spacing: -0.384px;
   color: #FFF;
+  min-height: 56px; /* две строки заголовка — выравнивает начало описания во всех карточках */
 }
 
 .cardDescription {
